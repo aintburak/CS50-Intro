@@ -22,7 +22,7 @@ Welcome to the Hello, World project! This project is part of the first problem s
 3. Run the program.
 
 
-![Screenshot 2024-04-18 at 12.09.44](https://hackmd.io/_uploads/r1D2Hv0xC.png)
+![](https://hackmd-prod-images.s3-ap-northeast-1.amazonaws.com/uploads/upload_92b2eb71c90b11c0e20c7bc980a237d6.png?AWSAccessKeyId=AKIA3XSAAW6AWSKNINWO&Expires=1713432617&Signature=byHG%2BDTpyx2CyJb2x%2FDtoZXEaM8%3D.png)
 
 
 ## Expected Output
