@@ -1,4 +1,4 @@
-# CS50 Week 0 - Scratch
+# Lecture 0 - CS50x 2024
 
 ## Introduction
 
