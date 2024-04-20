@@ -1,0 +1,10 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/burakkaya/Documents/Github/CS50-Intro/Week01-C/ProblemSet1/credit/credit'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003B1C, symSize: 0x8C }
+  - { offsetInCU: 0x48, offset: 0x48, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003B1C, symSize: 0x8C }
+  - { offsetInCU: 0x7E, offset: 0x7E, size: 0x8, addend: 0x0, symName: _getDigits, symObjAddr: 0x8C, symBinAddr: 0x100003BA8, symSize: 0x50 }
+  - { offsetInCU: 0xB4, offset: 0xB4, size: 0x8, addend: 0x0, symName: _luhnsAlgorithm, symObjAddr: 0xDC, symBinAddr: 0x100003BF8, symSize: 0x174 }
+  - { offsetInCU: 0x13A, offset: 0x13A, size: 0x8, addend: 0x0, symName: _printType, symObjAddr: 0x250, symBinAddr: 0x100003D6C, symSize: 0x158 }
+...
