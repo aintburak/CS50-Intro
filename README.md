@@ -51,7 +51,7 @@ The CS50 Library provides the following functions:
 
 ## License
 
-The CS50 Library is provided under the [MIT License](LICENSE.md). You are free to use, modify, and distribute the library as per the terms of the license.
+The CS50 Library is provided under the [MIT License](https://github.com/aintburak/CS50-Intro/blob/main/LICENSE). You are free to use, modify, and distribute the library as per the terms of the license.
 
 ## Credits
 
