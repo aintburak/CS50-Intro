@@ -1,4 +1,4 @@
-# CS50 Week 1 Summary
+# Lecture 1 - CS50x 2024
 
 ## Overview
 Week 1 of CS50 introduces the basics of computer science and programming, with a focus on the C programming language. The week covers foundational concepts in computer science, programming syntax in C, and practical problem-solving techniques.
