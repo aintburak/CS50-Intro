@@ -13,11 +13,7 @@ The course staff conducts random audits of CS50x submissions. Students found vio
 5. Choose one:
    - Submit Caesar if you feel less confident.
    - Submit Substitution if you feel more confident.
-   If you submit both Caesar and Substitution, we'll consider the higher of your two scores.
-
-## When to Do It
-
-By Wednesday, January 1, 2025, at 7:59 AM GMT+3.
+   If you submit both Caesar and Substitution, we'll consider the higher of your two scores..
 
 ## Advice
 
