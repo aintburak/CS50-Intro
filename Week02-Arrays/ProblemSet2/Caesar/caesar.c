@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     }
     // Convert argv[1] from a `string` to an `int`
     int argument = atoi(argv[1]);
-    printf("\nArgument: %d", argument);
+    
     
     // Create text field as pointer since we dont know the size of the text.
     char* text = (char*)malloc(BUFFSIZE * sizeof(char));
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     }
     
     // Prompt user for plaintext
-    printf("\nText: ");
+    printf("\nplaintext: ");
     fgets(text, BUFFSIZE, stdin);
     
     // whenever user enters prompt, the equivalent return string has been created 
@@ -47,20 +47,10 @@ int main(int argc, char* argv[])
     }
     // For each character in the plaintext:
 
-
+    printf("ciphertext: ");
     for(i = 0; i < strlen(text) - 1; i++) { // due to end of char '\0'
             printf("%c",rotate(text[i],argument));
     }
-/*
-        // Rotate the character if it's a letter
-        printf("\n\nA: %c --> %d\n\n", 'A', (int)'A');
-        
-        rotate('A', 1);
-        printf("\n!#############!\n");
-        rotate('!', 13);
-        printf("\n!#############!\n");
-        rotate('A', 27);
-*/
         free(text);
         free(ciphertext);
         return 0;
@@ -70,8 +60,6 @@ int main(int argc, char* argv[])
 
 char rotate(char c, int n) {
     int ascii;
-    //printf("\n---------");
-    //printf("\n'%c' : %d",c,(int)c);
     if(isalpha(c)) {
         // check if it is UPPERCASE
         if(isupper(c)) {
@@ -84,10 +72,5 @@ char rotate(char c, int n) {
     } else {
         return c;
     }
-
-    // After rotation
-    
-    //printf("----> '%c' : %d\n",(char)ascii,ascii);
-    //printf("---------\n");
     return (char)ascii;
 }
