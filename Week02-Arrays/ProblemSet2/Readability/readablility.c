@@ -66,30 +66,27 @@ int count_words(char* text)
 
     for(i = 0; i < len; i++){
             if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?') {
-                printf("-");
-                printf("\n === \n %s \n indexlen: %d \n === \n ", index, indexLen);
+                //if character is one of placeholders above.
                 strings[strSize] = (char*)malloc(indexLen*sizeof(char));
-                // changes first indexLen words, rest is the same...
-
                 // copy index to an element of array
-                printf("\nCopying %s ---> strings[strSize]\n", index);
                 for(int k = 0; k < indexLen; k++) {
                     strings[strSize][k] = index[k];
                 }
                 indexLen = 0;
                 strSize++;
             } else {
-                printf("%c",text[i]);
-                //printf("\nindex[indexLen] : %c  --> text[i] :  %c \n  === %d", index[indexLen],text[i], indexLen);
+                // If a normal character
                 index[indexLen] = text[i];
                 indexLen++;
             }
     }
-    printf("\n");
+    
+    /*
     // Print it out
     for(i = 0; i < strSize; i++){
         printf("Line #%d(length: %lu): %s\n", i, strlen(strings[i]),strings[i]);
     } 
+    */
     //Free each string
     for(i = 0; i < 5; i++){
         free(strings[i]);
