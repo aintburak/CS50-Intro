@@ -24,8 +24,8 @@ int main(void)
     int letters = count_letters(text);
     printf("%d", letters);
     */
-    char* text = "Burak has gone for fishing. He have seen a beautiful sightseeing.";
-    printf("\nOutput : %s\n", text);
+    char* text = "Congrats!Burak has gone for fishing.By the way,He have seen a beautiful sightseeing.";
+    printf("\nOutput : %s\n\n", text);
     //int words = count_words(text);
     //printf("\n%d", words);
     int sentences = count_sentences(text);
@@ -66,7 +66,10 @@ int count_words(char* text)
     }
 
     for(i = 0; i < len; i++){
-            if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?') {
+            if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?' || text[i] == '1'
+            || text[i] == '2' || text[i] == '3' || text[i] == '3' || text[i] == '4' || text[i] == '5'
+            || text[i] == '6' || text[i] == '7' || text[i] == '8' || text[i] == '9' || text[i] == '0'
+            || text[i] == ',') {
                 //if character is one of placeholders above.
                 strings[strSize] = (char*)malloc(indexLen*sizeof(char));
                 // copy index to an element of array
@@ -98,6 +101,15 @@ int count_words(char* text)
     return strSize;
 }
 
+
+/*
+You may assume that a sentence:
+
+- will contain at least one word;
+- will not start or end with a space; and
+- will not have multiple spaces in a row.
+*/
+
 int count_sentences(char* text)
 {
     // Return the number of sentences in text
@@ -106,12 +118,14 @@ int count_sentences(char* text)
     int len = strlen(text);
 
      for(i = 0; i < len; i++){
-            if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?') {
-                printf("-");
-            } else {
-                // If a normal character
-                printf("%c", text[i]);
-            }
+        // If a normal character
+        if(text[i] == '!' || text[i] == '.' || text[i] == '?') {
+            //printf(" [END OF THE SENTENCE] \n");
+            count++;
+        } else {
+            //printf("%c", text[i]);
+        }
+            
     }
     return count;
 }
