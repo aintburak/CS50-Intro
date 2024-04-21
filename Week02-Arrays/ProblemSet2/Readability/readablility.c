@@ -24,11 +24,12 @@ int main(void)
     int letters = count_letters(text);
     printf("%d", letters);
     */
-    char* text = "Burak has gone for fishing.";
+    char* text = "Burak has gone for fishing. He have seen a beautiful sightseeing.";
     printf("\nOutput : %s\n", text);
-    int words = count_words(text);
-    printf("\n%d", words);
-    
+    //int words = count_words(text);
+    //printf("\n%d", words);
+    int sentences = count_sentences(text);
+    printf("\n\n # of sentences ->  %d ", sentences);
     // Compute the Coleman-Liau index
 
     // Print the grade level
@@ -82,7 +83,7 @@ int count_words(char* text)
     }
     
     /*
-    // Print it out
+    // Print it out, u may use display_utils metod below to illustrate each element.
     for(i = 0; i < strSize; i++){
         printf("Line #%d(length: %lu): %s\n", i, strlen(strings[i]),strings[i]);
     } 
@@ -100,12 +101,25 @@ int count_words(char* text)
 int count_sentences(char* text)
 {
     // Return the number of sentences in text
+    int i;
+    int count = 0;
+    int len = strlen(text);
+
+     for(i = 0; i < len; i++){
+            if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?') {
+                printf("-");
+            } else {
+                // If a normal character
+                printf("%c", text[i]);
+            }
+    }
+    return count;
 }
 
-void display_utils(char*** s) {
+void display_utils(char** s) {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            printf("%c ", *s[i][j]);
+            printf("%c ", s[i][j]);
         }
         printf("\n");
     }
