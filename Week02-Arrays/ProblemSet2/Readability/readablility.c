@@ -3,32 +3,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <memory.h>
 
 #define BUFFSIZE 3000 
 
-void display_utils(char** s, int size);
 int count_letters(char* text);
 int count_words(char* text);
 int count_sentences(char* text);
 
-int main(void)
-{
-    
+int main(void) {
     char* text = (char*)malloc(BUFFSIZE * sizeof(char));
+    if (text == NULL) {
+        printf("Failed to allocate memory.\n");
+        return 1;
+    }
+
     // Prompt the user for some text
     printf("Text: ");
-    fgets(text, BUFFSIZE, stdin); 
-    printf("\nOutput : %s", text); 
+    fgets(text, BUFFSIZE, stdin);
+
+    // Trim newline character read by fgets
+    text[strcspn(text, "\n")] = 0;
 
     // Count the number of letters, words, and sentences in the text
     int letters = count_letters(text);
     int words = count_words(text);
     int sentences = count_sentences(text);
+
     // Compute the Coleman-Liau index
     float L = (letters / (float) words) * 100;
     float S = (sentences / (float) words) * 100;
     int index = round(0.0588 * L - 0.296 * S - 15.8);
+
     // Print the grade level
     if (index < 1) {
         printf("Before Grade 1\n");
@@ -37,85 +42,30 @@ int main(void)
     } else {
         printf("Grade %d\n", index);
     }
+
     // Clean up allocated memory
     free(text);
     return 0;
 }
 
-
-int count_letters(char* text)
-{
-    // Return the number of letters in text
-    int len = strlen(text);
+int count_letters(char* text) {
     int count = 0;
-
-    for(int i = 0; i < len; i++){
-        if(isalpha(text[i])) count++;
+    while (*text) {
+        if (isalpha(*text)) count++;
+        text++;
     }
     return count;
 }
 
-int count_words(char* text)
-{
-    // Return the number of words in text
-    int len = strlen(text);
-    int i = 0;
-
-    // 2 dimentional pointer array hence we dont even know any size and how many words do we have.
-    char **strings = (char**)malloc(len*sizeof(char*));
-    char* index = (char*)malloc(len/2 * sizeof(char));
-    int indexLen = 0;
-    int strSize = 0;
-    //allocate space for each string
-    // here allocate 50 bytes, which is more than enough for the strings
-    for(i = 0; i < len; i++){
-        strings[i] = (char*)malloc(100*sizeof(char));
+int count_words(char* text) {
+    int words = 0;
+    char* token = strtok(text, " ");
+    while (token != NULL) {
+        words++;
+        token = strtok(NULL, " ");
     }
-
-    for(i = 0; i < len; i++){
-            if(text[i] == ' ' || text[i] == '.' || text[i] == '!' || text[i] == '?' || text[i] == '1'
-            || text[i] == '2' || text[i] == '3' || text[i] == '3' || text[i] == '4' || text[i] == '5'
-            || text[i] == '6' || text[i] == '7' || text[i] == '8' || text[i] == '9' || text[i] == '0'
-            || text[i] == ',') {
-                //if character is one of placeholders above.
-                strings[strSize] = (char*)malloc(indexLen*sizeof(char));
-                // copy index to an element of array
-                for(int k = 0; k < indexLen; k++) {
-                    strings[strSize][k] = index[k];
-                }
-                indexLen = 0;
-                strSize++;
-            } else {
-                // If a normal character
-                index[indexLen] = text[i];
-                indexLen++;
-            }
-    }
-    
-    /*
-    // Print it out, u may use display_utils metod below to illustrate each element.
-    for(i = 0; i < strSize; i++){
-        printf("Line #%d(length: %lu): %s\n", i, strlen(strings[i]),strings[i]);
-    } 
-    */
-    //Free each string
-    for(i = 0; i < 5; i++){
-        free(strings[i]);
-    }
-    //finally release the first string
-    free(strings);
-
-    return strSize;
+    return words;
 }
-
-
-/*
-You may assume that a sentence:
-
-- will contain at least one word;
-- will not start or end with a space; and
-- will not have multiple spaces in a row.
-*/
 
 int count_sentences(char* text) {
     int sentences = 0;
@@ -126,12 +76,4 @@ int count_sentences(char* text) {
         text++;
     }
     return sentences;
-}
-
-
-void display_utils(char** s, int size) {
-    for (int i = 0; i < size; i++) {
-            printf("%s", s[i]);
-        printf("\n");
-    }
 }
