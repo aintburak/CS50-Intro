@@ -5,7 +5,8 @@
         "ctype.h": "c",
         "variant": "c",
         "__bit_reference": "c",
-        "bitset": "c"
+        "bitset": "c",
+        "math.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
