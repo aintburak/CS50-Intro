@@ -117,46 +117,17 @@ You may assume that a sentence:
 - will not have multiple spaces in a row.
 */
 
-int count_sentences(char* text)
-{
-    // Return the number of sentences in text
-    int i;
-    int wordCount = 0; 
-    int strSize = 0;
-    int len = strlen(text);
-    char** subString = (char**)malloc(len*sizeof(char*));
-    char* index = (char*)malloc(len * sizeof(char));
-    //allocate space for each string
-    // here allocate 50 bytes, which is more than enough for the strings
-    for(i = 0; i < len; i++){
-        subString[i] = (char*)malloc(len*sizeof(char));
-    }
-     for(i = 0; i < len; i++){
-        // If a normal character
-        if(text[i] == '!' || text[i] == '.' || text[i] == '?') {
-            //printf("\n");
-            for(int k = 0; k < wordCount; k++) {
-                    subString[strSize][k] = index[k];
-                }
-            wordCount = 0;
-            strSize++;
-        } else {
-            //printf("%c",text[i]);
-            // If a normal character
-            index[wordCount] = text[i];
-            wordCount++;
+int count_sentences(char* text) {
+    int sentences = 0;
+    while (*text) {
+        if (*text == '.' || *text == '?' || *text == '!') {
+            sentences++;
         }
+        text++;
     }
-
-    //Free each string
-    for(i = 0; i < 5; i++){
-        free(subString[i]);
-    }
-    //finally release the first string
-    free(subString);
-
-    return strSize;
+    return sentences;
 }
+
 
 void display_utils(char** s, int size) {
     for (int i = 0; i < size; i++) {
