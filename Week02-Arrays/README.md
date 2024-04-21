@@ -640,4 +640,5 @@ In this readme, you learned more details about compiling and how data is stored 
 4. How strings are simply arrays of characters.
 5. How to interact with arrays in your code.
 6. How command-line arguments can be passed to your programs.
+7. How ASCII-to-Integer works.
 
