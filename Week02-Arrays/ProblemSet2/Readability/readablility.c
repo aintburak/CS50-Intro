@@ -7,32 +7,39 @@
 
 #define BUFFSIZE 3000 
 
-
+void display_utils(char** s, int size);
 int count_letters(char* text);
 int count_words(char* text);
 int count_sentences(char* text);
 
 int main(void)
 {
-    /*
+    
     char* text = (char*)malloc(BUFFSIZE * sizeof(char));
     // Prompt the user for some text
     printf("Text: ");
     fgets(text, BUFFSIZE, stdin); 
     printf("\nOutput : %s", text); 
+
     // Count the number of letters, words, and sentences in the text
     int letters = count_letters(text);
-    printf("%d", letters);
-    */
-    char* text = "Congrats!Burak has gone for fishing.By the way,He have seen a beautiful sightseeing.";
-    printf("\nOutput : %s\n\n", text);
-    //int words = count_words(text);
-    //printf("\n%d", words);
+    int words = count_words(text);
     int sentences = count_sentences(text);
-    printf(" %d ", sentences);
     // Compute the Coleman-Liau index
-
+    float L = (letters / (float) words) * 100;
+    float S = (sentences / (float) words) * 100;
+    int index = round(0.0588 * L - 0.296 * S - 15.8);
     // Print the grade level
+    if (index < 1) {
+        printf("Before Grade 1\n");
+    } else if (index >= 16) {
+        printf("Grade 16+\n");
+    } else {
+        printf("Grade %d\n", index);
+    }
+    // Clean up allocated memory
+    free(text);
+    return 0;
 }
 
 
@@ -114,23 +121,46 @@ int count_sentences(char* text)
 {
     // Return the number of sentences in text
     int i;
-    int count = 0;
+    int wordCount = 0; 
+    int strSize = 0;
     int len = strlen(text);
-
+    char** subString = (char**)malloc(len*sizeof(char*));
+    char* index = (char*)malloc(len * sizeof(char));
+    //allocate space for each string
+    // here allocate 50 bytes, which is more than enough for the strings
+    for(i = 0; i < len; i++){
+        subString[i] = (char*)malloc(len*sizeof(char));
+    }
      for(i = 0; i < len; i++){
         // If a normal character
         if(text[i] == '!' || text[i] == '.' || text[i] == '?') {
-            count++;
+            //printf("\n");
+            for(int k = 0; k < wordCount; k++) {
+                    subString[strSize][k] = index[k];
+                }
+            wordCount = 0;
+            strSize++;
+        } else {
+            //printf("%c",text[i]);
+            // If a normal character
+            index[wordCount] = text[i];
+            wordCount++;
         }
     }
-    return count;
+
+    //Free each string
+    for(i = 0; i < 5; i++){
+        free(subString[i]);
+    }
+    //finally release the first string
+    free(subString);
+
+    return strSize;
 }
 
-void display_utils(char** s) {
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            printf("%c ", s[i][j]);
-        }
+void display_utils(char** s, int size) {
+    for (int i = 0; i < size; i++) {
+            printf("%s", s[i]);
         printf("\n");
     }
 }

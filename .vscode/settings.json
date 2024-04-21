@@ -3,6 +3,9 @@
         "stdio.h": "c",
         "string": "c",
         "ctype.h": "c",
-        "variant": "c"
-    }
+        "variant": "c",
+        "__bit_reference": "c",
+        "bitset": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
