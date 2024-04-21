@@ -39,4 +39,8 @@ int main(int argc, char* argv[]) {
     printf("plaintext: ");
     fgets(text, BUFFSIZE, stdin);
 
+
+
+    free(text);
+    return 0;
 }
