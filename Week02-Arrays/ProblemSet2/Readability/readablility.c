@@ -29,7 +29,7 @@ int main(void)
     //int words = count_words(text);
     //printf("\n%d", words);
     int sentences = count_sentences(text);
-    printf("\n\n # of sentences ->  %d ", sentences);
+    printf(" %d ", sentences);
     // Compute the Coleman-Liau index
 
     // Print the grade level
@@ -120,12 +120,8 @@ int count_sentences(char* text)
      for(i = 0; i < len; i++){
         // If a normal character
         if(text[i] == '!' || text[i] == '.' || text[i] == '?') {
-            //printf(" [END OF THE SENTENCE] \n");
             count++;
-        } else {
-            //printf("%c", text[i]);
         }
-            
     }
     return count;
 }
