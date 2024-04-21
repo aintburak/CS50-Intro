@@ -592,6 +592,42 @@ This command executes the mario executable with `8` as the command-line argument
 
 ---
 
+
+## What is **`atoi`** ?
+
+The function `atoi` stands for "**ASCII to Integer**" It is a standard C library function used to convert a string (that is, a sequence of characters representing a numeric value) into an integer. The `atoi` function is included in the C standard library `<cstdlib>` (also known as `<stdlib.h>` in C).
+
+### How atoi Works
+**`atoi`** takes a single argument, a C-string (const char*), and converts it into an integer. Here's how it operates:
+
+* **Parsing the String**: `atoi` starts by reading the string from left to right.
+* **Ignoring Whitespaces**: It skips all leading whitespace characters, such as spaces or tabs, until the first non-whitespace character is found.
+* **Handling Sign**: If the first non-whitespace character is a plus (+) or minus (-) sign, it notes the sign for the final result. The function then proceeds to the next character.
+* **Conversion**: `atoi` converts the subsequent characters to an integer until a non-numeric character is encountered. It stops reading the string at this point.
+
+
+### Example Usage
+
+```cpp=
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char input[] = "1234";
+    int number = atoi(input);
+    printf("The integer is %d\n", number);
+    return 0;
+}
+```
+
+### Limitations and Considerations
+* **Error Handling:** `atoi` does not report errors. If the input string does not contain any digits, `atoi` returns 0. This can make it difficult to distinguish between a genuine zero value and an error in parsing.
+* **Overflow and Underflow:** The function does not handle integer overflow and underflow conditions. If the integer value exceeds the range of representable values by the int type, the behavior is undefined.
+* **Alternative Functions:** Due to its limitations, functions like `strtol`, `strtoll`, or their unsigned counterparts (`strtoul`, `strtoull`) are often preferred. These functions provide better error handling and support for specifying the numeric base.
+
+`atoi` is suitable for quick conversions where the input is controlled or known to be safe, but for robust applications, especially where input might vary or be unpredictable, the more robust strtol and related functions are recommended for their additional safety features and error handling capabilities.
+
+
 ## To Sum Up
 
 
