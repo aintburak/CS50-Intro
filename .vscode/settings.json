@@ -9,7 +9,8 @@
         "math.h": "c",
         "stdlib.h": "c",
         "sstream": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "string_view": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -15,13 +15,11 @@ int findIndexOf(char* array,char a);
 
 int main(int argc, char* argv[]) {
     int i;
-    
     // Check if it takes more than 2 args
     if (argc != 2) {
         printf("Usage: ./substitution key\n");
         return 1;
     }
-
     // Check if argument is not 26 chars
     if(strlen(argv[1]) != 26) {
         printf("Key must contain 26 characters.\n");
@@ -34,27 +32,23 @@ int main(int argc, char* argv[]) {
             }
         }
     }
-
     // Create text field as pointer since we dont know the size of the text.
     char* text = (char*)malloc(BUFFSIZE * sizeof(char));
     if (text == NULL) {
         printf("Failed to allocate memory.\n");
         return 1;
     }
-
-
     // Prompt user for plaintext
     printf("plaintext: ");
     fgets(text, BUFFSIZE, stdin);
     //printf("argv[1]: %s \ntext: %s\nstrlen(argv[1]) %d", argv[1],text,strlen(argv[1]));
-    printf("\n-----------\n");
     encipher(argv[1],text);  
 
     free(text);
     return 0;
 }
 
-
+// function returns encrypted the input text given
 char* encipher(char* customAlphabet, char* input) {
     int i;
     int length = strlen(input);
@@ -66,44 +60,28 @@ char* encipher(char* customAlphabet, char* input) {
     }
     cipherText[length] = '\0'; // Null-terminate the string
 
-
     for(i = 0; i < length; i++) {
-        
         if(isalpha(input[i])) {
             // if char is alphabetic, change it
-            printf("\nwe're looking for : %c\n isupper(input[i]): %d",input[i], isupper(input[i]));
-
             int index = isupper(input[i]) ? findIndexOf(alphabetUpper,input[i]) : findIndexOf(alphabetLower,input[i]);
             cipherText[i] = customAlphabet[index];
-
         } else {
             // if its not alphabetic, keep the same, DONT change it.
             cipherText[i] = input[i]; 
         }
-        
-        
     }
-
-    printf("\n\nciphertext: %s\n", cipherText);
+    printf("ciphertext: %s", cipherText);
     return cipherText;
 }
 
-
+// this method finds the index of the character we're looking for within a given string/array.
 int findIndexOf(char* array,char a) {
-
     int i,j;
     int length = strlen(array);
-
     for(i = 0; i < length; i++) {
-        
-        printf("\nchar : %c -?-> %c (%d) ",a,array[i],i);
         if(array[i] == a) { // successfully finds it inside the array
-            printf("**\nfound ! at the index -> %d",i);
-            printf("\n------");
             return i;
         }
-        printf("\n");
-
     }
 }
 
