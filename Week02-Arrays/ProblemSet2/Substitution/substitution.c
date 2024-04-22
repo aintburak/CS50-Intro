@@ -61,27 +61,30 @@ char* encipher(char* customAlphabet, char* input) {
     cipherText[length] = '\0'; // Null-terminate the string
 
     for(i = 0; i < length; i++) {
-        if(isalpha(input[i])) {
-            // if char is alphabetic, change it
-            int index = isupper(input[i]) ? findIndexOf(alphabetUpper,input[i]) : findIndexOf(alphabetLower,input[i]);
-            cipherText[i] = customAlphabet[index];
+    if(isalpha(input[i])) {
+        int index = isupper(input[i]) ? findIndexOf(alphabetUpper, input[i]) : findIndexOf(alphabetLower, input[i]);
+        if (isupper(input[i])) {
+            cipherText[i] = toupper(customAlphabet[index]);
         } else {
-            // if its not alphabetic, keep the same, DONT change it.
-            cipherText[i] = input[i]; 
+            cipherText[i] = tolower(customAlphabet[index]);
         }
+    } else {
+        cipherText[i] = input[i];
     }
+    }
+
     printf("ciphertext: %s", cipherText);
     return cipherText;
 }
 
 // this method finds the index of the character we're looking for within a given string/array.
-int findIndexOf(char* array,char a) {
-    int i,j;
-    int length = strlen(array);
-    for(i = 0; i < length; i++) {
-        if(array[i] == a) { // successfully finds it inside the array
+int findIndexOf(char* array, char a) {
+    for (int i = 0; i < 26; i++) {  // The length is known and is 26 for alphabet arrays.
+        if (array[i] == a) {
             return i;
         }
     }
+    return -1; // Fallback, should not happen with correct input.
 }
+
 
