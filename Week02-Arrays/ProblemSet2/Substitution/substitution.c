@@ -6,11 +6,12 @@
 
 #define BUFFSIZE 3000 
 
-char alphabetUpper[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-char alphabetLower[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+char alphabetUpper[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+char alphabetLower[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
 
-char* encipher(char* str);
+char* encipher(char* customAlphabet, char* input);
+int findIndexOf(char* array,char a);
 
 int main(int argc, char* argv[]) {
     int i;
@@ -47,51 +48,62 @@ int main(int argc, char* argv[]) {
     fgets(text, BUFFSIZE, stdin);
     //printf("argv[1]: %s \ntext: %s\nstrlen(argv[1]) %d", argv[1],text,strlen(argv[1]));
     printf("\n-----------\n");
-    encipher(argv[1]);
-
-    printf("\n-----ALPHABET------\n");
-    printf("\n-----lower------\n");
-    for(i = 0; i < 26; i++) {
-        printf("%c - %d \n",alphabetLower[i], (int)alphabetLower[i]);
-    }
-
-    printf("\n-----Upper------\n");
-    for(i = 0; i < 26; i++) {
-        printf("%c - %d \n",alphabetUpper[i], (int)alphabetUpper[i]);
-    }
-    
+    encipher(argv[1],text);  
 
     free(text);
     return 0;
 }
 
 
-char* encipher(char* str) {
+char* encipher(char* customAlphabet, char* input) {
     int i;
-    int length = strlen(str); // expecting 26
+    int length = strlen(input);
 
-    char* cipher = (char*)malloc(strlen(str) * sizeof(char));
-    if (cipher == NULL) {
+    char* cipherText = (char*)malloc((length + 1) * sizeof(char)); // +1 for the null terminator
+    if (cipherText == NULL) {
         printf("Failed to allocate memory.\n");
-        return '\0';
+        return NULL;
     }
+    cipherText[length] = '\0'; // Null-terminate the string
+
 
     for(i = 0; i < length; i++) {
-        printf("%c",str[i]);
         
-        if(isalpha(str[i])) {
+        if(isalpha(input[i])) {
             // if char is alphabetic, change it
-            //if(str[i])            
+            printf("\nwe're looking for : %c\n isupper(input[i]): %d",input[i], isupper(input[i]));
+
+            int index = isupper(input[i]) ? findIndexOf(alphabetUpper,input[i]) : findIndexOf(alphabetLower,input[i]);
+            cipherText[i] = customAlphabet[index];
 
         } else {
-            // if its not alphabetic, keep the same
-            cipher[i] = str[i]; 
+            // if its not alphabetic, keep the same, DONT change it.
+            cipherText[i] = input[i]; 
         }
         
         
     }
 
-    return cipher;
+    printf("\n\nciphertext: %s\n", cipherText);
+    return cipherText;
 }
 
+
+int findIndexOf(char* array,char a) {
+
+    int i,j;
+    int length = strlen(array);
+
+    for(i = 0; i < length; i++) {
+        
+        printf("\nchar : %c -?-> %c (%d) ",a,array[i],i);
+        if(array[i] == a) { // successfully finds it inside the array
+            printf("**\nfound ! at the index -> %d",i);
+            printf("\n------");
+            return i;
+        }
+        printf("\n");
+
+    }
+}
 
