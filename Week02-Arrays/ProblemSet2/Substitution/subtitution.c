@@ -38,9 +38,28 @@ int main(int argc, char* argv[]) {
     // Prompt user for plaintext
     printf("plaintext: ");
     fgets(text, BUFFSIZE, stdin);
-
+    printf("argv[1]: %s \ntext: %s\n strlen(argv[1]) %d", argv[1],text,strlen(argv[1]));
 
 
     free(text);
     return 0;
 }
+
+
+char* encipher(char* str) {
+    int i;
+    int length = strlen(str); // expecting 26
+
+    char* cipher = (char*)malloc(strlen(str) * sizeof(char));
+    if (cipher == NULL) {
+        printf("Failed to allocate memory.\n");
+        return 1;
+    }
+
+
+    free(cipher); // release cipher
+
+    return cipher;
+}
+
+
