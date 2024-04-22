@@ -6,9 +6,14 @@
 
 #define BUFFSIZE 3000 
 
+char alphabetUpper[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+char alphabetLower[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+
 char* encipher(char* str);
 
 int main(int argc, char* argv[]) {
+    int i;
     
     // Check if it takes more than 2 args
     if (argc != 2) {
@@ -44,6 +49,17 @@ int main(int argc, char* argv[]) {
     printf("\n-----------\n");
     encipher(argv[1]);
 
+    printf("\n-----ALPHABET------\n");
+    printf("\n-----lower------\n");
+    for(i = 0; i < 26; i++) {
+        printf("%c - %d \n",alphabetLower[i], (int)alphabetLower[i]);
+    }
+
+    printf("\n-----Upper------\n");
+    for(i = 0; i < 26; i++) {
+        printf("%c - %d \n",alphabetUpper[i], (int)alphabetUpper[i]);
+    }
+    
 
     free(text);
     return 0;
@@ -62,21 +78,18 @@ char* encipher(char* str) {
 
     for(i = 0; i < length; i++) {
         printf("%c",str[i]);
-        if(isalpha(str[i]) {
-            // if char is alphabetic
-            
+        
+        if(isalpha(str[i])) {
+            // if char is alphabetic, change it
+            //if(str[i])            
 
         } else {
-            // not alphabetic
-
+            // if its not alphabetic, keep the same
+            cipher[i] = str[i]; 
         }
         
         
-        )
     }
-
-
-    free(cipher); // release cipher
 
     return cipher;
 }
