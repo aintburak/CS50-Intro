@@ -6,6 +6,8 @@
 
 #define BUFFSIZE 3000 
 
+char* encipher(char* str);
+
 int main(int argc, char* argv[]) {
     
     // Check if it takes more than 2 args
@@ -38,7 +40,9 @@ int main(int argc, char* argv[]) {
     // Prompt user for plaintext
     printf("plaintext: ");
     fgets(text, BUFFSIZE, stdin);
-    printf("argv[1]: %s \ntext: %s\n strlen(argv[1]) %d", argv[1],text,strlen(argv[1]));
+    //printf("argv[1]: %s \ntext: %s\nstrlen(argv[1]) %d", argv[1],text,strlen(argv[1]));
+    printf("\n-----------\n");
+    encipher(argv[1]);
 
 
     free(text);
@@ -53,7 +57,22 @@ char* encipher(char* str) {
     char* cipher = (char*)malloc(strlen(str) * sizeof(char));
     if (cipher == NULL) {
         printf("Failed to allocate memory.\n");
-        return 1;
+        return '\0';
+    }
+
+    for(i = 0; i < length; i++) {
+        printf("%c",str[i]);
+        if(isalpha(str[i]) {
+            // if char is alphabetic
+            
+
+        } else {
+            // not alphabetic
+
+        }
+        
+        
+        )
     }
 
 
