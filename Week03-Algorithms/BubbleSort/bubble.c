@@ -5,7 +5,7 @@
 
 void displayArray(int* array, int size);
 void swap(int* a, int* b);
-int* bubbleSort(int* array, int size);
+void bubbleSort(int* array, int size);
 
 int main() {
 
@@ -15,37 +15,30 @@ int main() {
     int mySize = sizeof(myArray) / sizeof(myArray[0]);
     printf("The size of the array is: %d\n", mySize);
     displayArray(myArray,mySize);
-    
-    int* a;
-    *a = 12;
-    int* b;
-    *b = 3;
-
-    printf("\na: %d  \tb: %d\t --> &a: %i \t &b: %i\t --> a: %i \t b: %d ", *a, *b,&a,&b,a,b);
-    swap(a,b);
-    printf("\na: %d  \tb: %d\t --> &a: %i \t &b: %i\t --> a: %i \t b: %d ", *a, *b,&a,&b,a,b);
-
+    bubbleSort(myArray,mySize);
+    printf("\n--New Array---\n");
+    displayArray(myArray,mySize);
     return 0;
 }
 
 
-int* bubbleSort(int* array,int n) {
+void bubbleSort(int* array,int n) {
     int i = 0, j = 0;
-
+    
     for(i = 1; i <= n; i++) {
-
+        printf("iteration %d) ",i);
+        displayArray(array,n);
         for(j = 0; j <= n - 1; j++) {
 
             if(array[j] > array[j+1]) {
                 swap(&array[j],&array[j+1]);
             }
-
-
         }
-
+        
     }
 
-    return array;
+    printf("\nDone.\n");
+
 
 }
 
