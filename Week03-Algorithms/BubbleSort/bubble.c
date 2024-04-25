@@ -4,7 +4,7 @@
 
 
 void displayArray(int* array, int size);
-
+int bubbleSort(int* array, int size);
 
 int main() {
 
@@ -20,7 +20,13 @@ int main() {
 }
 
 
-void displayArray(int* array, int size){
+int* bubbleSort(int* array,int size) {
+
+
+}
+
+
+void displayArray(int* array, int size) {
     
     for (int i = 0; i < size; ++i) {
         printf("%d ", array[i]);
