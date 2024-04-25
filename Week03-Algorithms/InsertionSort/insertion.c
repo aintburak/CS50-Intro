@@ -23,11 +23,11 @@ int main() {
 
 
 void insertionSort(int* array,int size) {
-    int i = 0, j = 0;
+    int i = 0, j;
     printf("\niteration %d) ", i);
     displayArray(array,size);
-
-    for(i = 1; i < size - 1; i++) {
+    for(i = 1; i < size; i++) {
+        // first item is automatically sorted hence we dont have any left item, so it starts w/ 1
         j = i;
         while((j > 0) && (array[j] < array[j-1])) {
             swap(&array[j],&array[j-1]);
@@ -36,8 +36,6 @@ void insertionSort(int* array,int size) {
         printf("\niteration %d) ", i);
         displayArray(array,size);
     }
-
-
 }
 
 
