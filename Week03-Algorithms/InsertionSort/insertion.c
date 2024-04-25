@@ -8,23 +8,34 @@ void swap(int* a, int* b);
 void insertionSort(int* array, int size);
 
 int main() {
-
-    
+   
     int myArray[] = {2, 8, 5, 3, 9, 4};
     int mySize = sizeof(myArray) / sizeof(myArray[0]);
     printf("The size of the array is: %d\n", mySize);
     displayArray(myArray,mySize);
     
-    //TODO
+    insertionSort(myArray,mySize);
 
-
+    printf("\n------\n");
+    displayArray(myArray,mySize);
     return 0;
 }
 
 
-void insertionSort(int* array,int n) {
+void insertionSort(int* array,int size) {
     int i = 0, j = 0;
-    //TODO
+    printf("\niteration %d) ", i);
+    displayArray(array,size);
+
+    for(i = 1; i < size - 1; i++) {
+        j = i;
+        while((j > 0) && (array[j] < array[j-1])) {
+            swap(&array[j],&array[j-1]);
+            j = j - 1;
+        }
+        printf("\niteration %d) ", i);
+        displayArray(array,size);
+    }
 
 
 }
