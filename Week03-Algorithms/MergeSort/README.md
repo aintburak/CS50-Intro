@@ -39,3 +39,46 @@ Split the array into two halves:
 
 ### Final Sorted Array
 - `[5, 7, 23, 32, 34, 62]`
+
+
+## Merge Sort Illustrated Example
+
+This document illustrates the merge sort process using tables for the array `[34, 7, 23, 32, 5, 62]`.
+
+## Initial Array
+`[34, 7, 23, 32, 5, 62]`
+
+## Detailed Steps with Tables
+
+### Step 1: Divide the Array
+| Left Half       | Right Half      |
+|-----------------|-----------------|
+| 34, 7, 23       | 32, 5, 62       |
+
+### Step 2: Recursively Sort Each Half
+
+#### Sort Left Half `[34, 7, 23]`
+| Split           | Sort Each       | Merge Result    |
+|-----------------|-----------------|-----------------|
+| 34              | 34              |                 |
+| 7, 23           | 7, 23           |                 |
+| 7               | 7               |                 |
+| 23              | 23              | 7, 23           |
+| Merge Above     |                 | 7, 23, 34       |
+
+#### Sort Right Half `[32, 5, 62]`
+| Split           | Sort Each       | Merge Result    |
+|-----------------|-----------------|-----------------|
+| 32              | 32              |                 |
+| 5, 62           | 5, 62           |                 |
+| 5               | 5               |                 |
+| 62              | 62              | 5, 62           |
+| Merge Above     |                 | 5, 32, 62       |
+
+### Step 3: Merge Sorted Halves
+| Left Sorted     | Right Sorted    | Final Sorted Array |
+|-----------------|-----------------|--------------------|
+| 7, 23, 34       | 5, 32, 62       | 5, 7, 23, 32, 34, 62 |
+
+## Conclusion
+The array `[34, 7, 23, 32, 5, 62]` is sorted as `[5, 7, 23, 32, 34, 62]` using the merge sort algorithm.
