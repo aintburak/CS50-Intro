@@ -5,7 +5,7 @@
 
 void displayArray(int* array, int size);
 void swap(int* a, int* b);
-void mergeSort(int* array, int size);
+int* mergeSort(int* array, int size);
 
 int main() {
    
@@ -20,7 +20,13 @@ int main() {
 }
 
 
-void mergeSort(int* array,int size) {
+int* merge(int* a, int sa, int* b, int sb) {
+   
+    // TODO
+}
+
+
+int* mergeSort(int* array,int size) {
    
     // TODO
 }
