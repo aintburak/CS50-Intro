@@ -80,5 +80,54 @@ This document illustrates the merge sort process using tables for the array `[34
 |-----------------|-----------------|--------------------|
 | 7, 23, 34       | 5, 32, 62       | 5, 7, 23, 32, 34, 62 |
 
+
+## Merge Sort Pseudocode
+
+This is the pseudocode for the merge sort algorithm, which is a divide and conquer algorithm that sorts an array by dividing it into halves, sorting the halves, and then merging them back together.
+
+### mergesort function
+
+```
+mergesort(array a)
+  if (n == 1)
+    return a
+
+  arrayOne = a[0] ... a[n/2]
+  arrayTwo = a[n/2+1] ... a[n]
+
+  arrayOne = mergesort(arrayOne)
+  arrayTwo = mergesort(arrayTwo)
+
+  return merge(arrayOne, arrayTwo)
+```
+
+
+### merge function
+
+```
+merge(array a, array b)
+  array c
+
+  while (a and b have elements)
+    if (a[0] > b[0])
+      add b[0] to the end of c
+      remove b[0] from b
+    else
+      add a[0] to the end of c
+      remove a[0] from a
+
+  // At this point either a or b is empty
+
+  while (a has elements)
+    add a[0] to the end of c
+    remove a[0] from a
+
+  while (b has elements)
+    add b[0] to the end of c
+    remove b[0] from b
+
+  return c
+```
+
 ## Conclusion
 The array `[34, 7, 23, 32, 5, 62]` is sorted as `[5, 7, 23, 32, 34, 62]` using the merge sort algorithm.
