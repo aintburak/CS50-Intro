@@ -13,16 +13,32 @@ int main() {
     int mySize = sizeof(myArray) / sizeof(myArray[0]);
     printf("The size of the array is: %d\n", mySize);
     displayArray(myArray,mySize);
-    
-    //TODO
+    printf("---\n");
+    selectionSort(myArray,mySize);
 
     return 0;
 }
 
 
 void selectionSort(int* array,int size) {
+
+    int i,j;
+
+    for(i = 0; i < size - 1; i++) {
+        int minIndex = i;
+        for(j = i+1; j < size; j++) {
+            if(array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if(minIndex != i){ // if any changes found, swap!
+            swap(&array[minIndex],&array[i]);
+        }
+        printf("\niteration %d) ", i);
+        displayArray(array,size);
+        printf("\n");
+    }
    
-    // TODO
 }
 
 
