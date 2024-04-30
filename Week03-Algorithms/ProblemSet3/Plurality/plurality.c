@@ -1,4 +1,3 @@
-#include <cs50.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -8,7 +7,7 @@
 // Candidates have name and vote count
 typedef struct
 {
-    string name;
+    char* name;
     int votes;
 } candidate;
 
@@ -19,10 +18,10 @@ candidate candidates[MAX];
 int candidate_count;
 
 // Function prototypes
-bool vote(string name);
+int vote(char* name);
 void print_winner(void);
 
-int main(int argc, string argv[])
+int main(int argc, char* argv[])
 {
     // Check for invalid usage
     if (argc < 2)
@@ -44,15 +43,19 @@ int main(int argc, string argv[])
         candidates[i].votes = 0;
     }
 
-    int voter_count = get_int("Number of voters: ");
+    int voter_count;
+    printf("Number of voters: ");
+    scanf("%d", &voter_count);
+    char voteName[100];
 
     // Loop over all voters
     for (int i = 0; i < voter_count; i++)
     {
-        string name = get_string("Vote: ");
+        printf("Vote: ");
+        scanf("%s", voteName);
 
         // Check for invalid vote
-        if (!vote(name))
+        if (!vote(voteName))
         {
             printf("Invalid vote.\n");
         }
@@ -63,17 +66,17 @@ int main(int argc, string argv[])
 }
 
 // Update vote totals given a new vote
-bool vote(string name)
+int vote(char* name)
 {
     for (int i = 0; i < candidate_count; i++)
     {
         if (strcmp(candidates[i].name, name) == 0)
         {
             candidates[i].votes++;
-            return true;
+            return 1;
         }
     }
-    return false;
+    return 0;
 }
 
 // Print the winner (or winners) of the election
@@ -98,5 +101,4 @@ void print_winner(void)
             printf("%s\n", candidates[i].name);
         }
     }
-    return;
 }
