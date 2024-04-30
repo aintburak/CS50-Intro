@@ -99,11 +99,29 @@ int main(int argc, char* argv[]) {
     }
     return 0;
 }
+
+
 // Record preference if vote is valid
 bool vote(int voter, int rank, char* name)
 {
-    // TODO
-    return false;
+    int i, j;
+    for (i = 0; i < voter_count; i++) {
+        // voter
+
+        for (j = 0; j < candidate_count; j++) {
+            // candidate
+            // update the preferences array if
+            if(!strcmp(candidates[j].name,name) && j == rank) {
+
+                preferences[i][j] = voter;
+            }
+
+        }
+
+
+
+    }
+
 }
 
 // Tabulate votes for non-eliminated candidates
