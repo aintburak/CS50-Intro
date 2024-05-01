@@ -109,7 +109,8 @@ bool vote(int voter, int rank, char* name)
     for (j = 0; j < candidate_count; j++) {
         
         if(!strcmp(candidates[j].name,name)) { // if they match
-            preferences[i][j] = voter;
+            preferences[voter][rank] = j;
+            return true;
         }
     }
     return false;
@@ -118,7 +119,12 @@ bool vote(int voter, int rank, char* name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
+    int i,j;
+    for (i = 0; i < voter_count; i++) {
+        for (j = 0; j < candidate_count; j++) { 
+
+        }
+    }
     return;
 }
 
