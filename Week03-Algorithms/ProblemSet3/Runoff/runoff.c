@@ -104,24 +104,15 @@ int main(int argc, char* argv[]) {
 // Record preference if vote is valid
 bool vote(int voter, int rank, char* name)
 {
-    int i, j;
-    for (i = 0; i < voter_count; i++) {
-        // voter
+    int j;
 
-        for (j = 0; j < candidate_count; j++) {
-            // candidate
-            // update the preferences array if
-            if(!strcmp(candidates[j].name,name) && j == rank) {
-
-                preferences[i][j] = voter;
-            }
-
+    for (j = 0; j < candidate_count; j++) {
+        
+        if(!strcmp(candidates[j].name,name)) { // if they match
+            preferences[i][j] = voter;
         }
-
-
-
     }
-
+    return false
 }
 
 // Tabulate votes for non-eliminated candidates
