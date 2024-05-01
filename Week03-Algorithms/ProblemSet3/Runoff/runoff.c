@@ -112,7 +112,7 @@ bool vote(int voter, int rank, char* name)
             preferences[i][j] = voter;
         }
     }
-    return false
+    return false;
 }
 
 // Tabulate votes for non-eliminated candidates
