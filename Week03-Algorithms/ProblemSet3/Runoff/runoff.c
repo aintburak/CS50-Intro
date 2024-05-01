@@ -122,7 +122,12 @@ void tabulate(void)
     int i,j;
     for (i = 0; i < voter_count; i++) {
         for (j = 0; j < candidate_count; j++) { 
-
+            int index = preferences[i][j]; // index of candidate
+            if((!candidates[index].eliminated)) {
+                // find relevant candidate  AND check if that candidate has not been eliminated yet 
+                candidates[index].votes++;
+            }
+            
         }
     }
     return;
