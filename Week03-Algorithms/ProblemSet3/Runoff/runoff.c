@@ -139,7 +139,7 @@ bool print_winner(void)
 {
     int i;
     double reqVotes = round(((double)voter_count)/2);
-    int maxIndex = 0; // init max
+    
     for (i = 0; i < candidate_count; i++) { 
         
         if((!candidates[i].eliminated) && (candidates[i].votes >= reqVotes)) {
