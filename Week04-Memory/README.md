@@ -237,9 +237,65 @@ This breakdown helps understand how pointers store and manipulate memory address
 <!-- Strings -->
 
 
+---
 
 
 
+# Understanding Strings in C
+
+Strings in C are arrays of characters terminated by a null character (`\0`). They are used to store text and are fundamental to handling data in C programs.
+
+## What are Strings?
+
+In C, a string is essentially a contiguous sequence of characters terminated by a null character (`\0`). This null character indicates the end of the string, allowing functions to determine where the string stops in memory.
+
+## How Strings Work
+
+Strings are stored in contiguous memory locations. In C, you can manipulate strings using pointers, as a string name (like an array name) gives the address of the first element.
+
+### Example with cs50 Library
+
+Using the cs50 library, you might encounter a simplified way to handle strings using the `string` type, which is essentially a typedef for `char*`. Here is how you can manipulate and understand strings with cs50:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s = "HI!";
+    printf("%p\n", s);        // Prints the address of the first character in the string
+    printf("%p\n", &s[0]);    // Address of the first character
+    printf("%p\n", &s[1]);    // Address of the second character
+    printf("%p\n", &s[2]);    // Address of the third character
+    printf("%p\n", &s[3]);    // Address of the null terminator '\0'
+}
+```
+
+This code demonstrates how each character in the string (including the null terminator) is stored at contiguous memory addresses.
+
+### Raw C Code Example
+
+In raw C, without any library, strings are handled directly through character arrays or pointers:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    char *s = "HI!";
+    printf("%s\n", s);  // Prints the string starting from the address pointed to by 's'
+}
+```
+
+## How We Know a String Ends
+
+In C, all strings end with a null character `\0`. This is how functions like `printf` know where to stop reading the string. The null character acts as a sentinel to mark the end of the sequence of characters that comprise the string.
+
+
+
+---
+ 
 
 
 
