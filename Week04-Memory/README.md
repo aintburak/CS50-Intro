@@ -45,11 +45,16 @@ Problem Set 4 often challenges students to:
 Understanding memory is another important topic for logical thinking, impacting both the efficiency and correctness of software. The skills learned this week are foundational for all future programming and software development tasks.
 
 
+---
+
+
+<!-- # `$TODO` -->
+
 ![CS50 Week 3 - Sorting and Searching](https://cs50.harvard.edu/x/2024/notes/3/cs50Week3Slide010.png)
 
 *Image source: CS50's Introduction to Computer Science, Week 3 lecture slide.*
 
-
+---
 
 
 ## Attribution and Licensing
