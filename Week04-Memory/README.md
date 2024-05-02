@@ -315,6 +315,98 @@ In C, all strings end with a null character `\0`. This is how functions like `pr
 
 <!-- Strcmp -->
 
+--- 
+
+# String Comparison in C
+
+In C, a string is an array of characters terminated by a null character (`\0`). Unlike basic data types, strings cannot be directly compared using the `==` operator as it would only compare the memory addresses of the strings, not their contents.
+
+## Understanding String Comparison
+
+When you compare two strings using the `==` operator, you are actually comparing the pointers to the strings (i.e., their memory addresses), not the characters of the strings themselves. This is an important distinction because even if two separate strings contain the exact same characters, they will often be located at different memory addresses.
+
+## Example: Comparing Integers
+
+Let's first look at a simple integer comparison to understand the basic comparison structure in C:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get two integers
+    int i = get_int("i: ");
+    int j = get_int("j: ");
+
+    // Compare integers
+    if (i == j)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+In this example, the `==` operator works as expected because `i` and `j` are integer values.
+
+## Example: Incorrect String Comparison
+
+Now, applying the same logic to strings leads to incorrect results:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get two strings
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+
+    // Compare strings' addresses
+    if (s == t)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+Even if `s` and `t` contain the same text, the comparison `s == t` checks whether `s` and `t` point to the same memory address, which is usually not the case unless they explicitly reference the same string object.
+
+## Correct Way to Compare Strings
+
+To properly compare the contents of two strings, you should use the `strcmp()` function provided by the string.h library, which compares strings character by character:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>  // Include the string library for strcmp
+
+int main(void)
+{
+    // Get two strings
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+
+    // Compare strings using strcmp
+    if (strcmp(s, t) == 0)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+In this code, `strcmp(s, t)` returns `0` if the strings are identical. This is the correct method to compare the actual content of two strings in C.
+
 
 
 
