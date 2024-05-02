@@ -49,7 +49,3 @@ This problem set may involve several tasks such as:
 - Begin with understanding how pointers work in C to avoid common pitfalls later.
 - Regularly run memory checks while developing to catch issues early.
 - Participate in CS50 discussions or study groups to clarify doubts and learn from peers.
-
-## Conclusion
-Problem Set 4 is crucial for your development as a programmer, providing essential skills in handling complex data structures and understanding low-level memory management. Take your time to thoroughly understand the concepts and apply them effectively in your solutions.
-
