@@ -143,12 +143,9 @@ bool print_winner(void)
     for (i = 0; i < candidate_count; i++) { 
         
         if((!candidates[i].eliminated) && (candidates[i].votes >= reqVotes)) {
-           
+            printf("\n%s is the winner.",candidates[i].name);
+           return true;
         }
-
-
-        
-        
     }
 
     return false;
