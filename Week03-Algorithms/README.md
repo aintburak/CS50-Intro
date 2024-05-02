@@ -224,9 +224,7 @@ int main() {
 
 The `swap` function in this example exchanges the pointers `a` and `b`, changing which integers the pointers reference. The actual addresses where `a` and `b` themselves are stored do not change.
 
-## Conclusion
-
-Understanding pointers is crucial for effective C programming. This example illustrates how pointers can be used for dynamic memory management and manipulating data through memory addresses.
+---
 
 # CS50 Course References
 
