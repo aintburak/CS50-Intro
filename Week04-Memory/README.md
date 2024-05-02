@@ -109,11 +109,6 @@ Understanding memory is another important topic for logical thinking, impacting 
 
 
 
-
-
-
-
-
 <!-- Dynamic Memory Alloc -->
 
 
@@ -162,21 +157,6 @@ Understanding memory is another important topic for logical thinking, impacting 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Strcpy -->
 
 
@@ -184,15 +164,7 @@ Understanding memory is another important topic for logical thinking, impacting 
 
 
 
-
-
-
-
-
-
 <!-- malloc and Valgrind -->
-
-
 
 
 
@@ -213,26 +185,7 @@ Understanding memory is another important topic for logical thinking, impacting 
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!-- Swap* -->
-
-
-
-
-
-
-
-
-
 
 
 
