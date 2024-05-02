@@ -1,8 +1,45 @@
 # Lecture 3 - CS50x 2024
 
 
----
+## Overview
+Week 3 of CS50 introduces students to essential computer science algorithms, focusing on sorting and searching techniques. This week includes lectures, shorts, and a problem set designed to enhance your understanding of how algorithms work and how they are implemented in C.
 
+## Learning Objectives
+- Understand and implement searching algorithms like linear search and binary search.
+- Learn sorting algorithms such as bubble sort, selection sort, insertion sort, and more advanced algorithms like merge sort.
+- Analyze and compare the time complexities of different algorithms.
+
+## Lecture
+The lecture covers the following key topics:
+- **Searching Algorithms**: How to efficiently find data within a dataset.
+- **Sorting Algorithms**: Techniques to reorder data in a specific sequence.
+- **Algorithm Efficiency**: Time complexity and space complexity analysis.
+
+## Shorts
+Shorts provide additional explanations on specific topics covered in the lecture, including practical demonstrations of the algorithms discussed.
+
+## Problem Set
+The problem set for Week 3 challenges you to:
+1. **Implement one or more sorting algorithms.**
+2. **Implement one or more searching algorithms.**
+3. **Optimize your implementations for speed and efficiency.**
+
+### Problem Set Tasks:
+- **Sort**: Implement a program that sorts a list of numbers using a sorting algorithm.
+- **Search**: Implement a program that searches for a number in a list of numbers using a searching algorithm.
+
+## Resources
+- CS50 Study Material: [link to CS50 study materials for Week 3]
+- Supplementary Videos: [link to supplementary videos relevant to Week 3]
+- CS50 Reference: [link to CS50 reference tools and resources]
+
+## Tips for Success
+- Review the lecture and shorts multiple times to fully grasp the concepts.
+- Start the problem set early and test your code thoroughly to handle all edge cases.
+- Utilize CS50’s communities, like discussion forums or groups, to discuss and understand complex topics.
+
+
+---
 # C Programming: Structs and Typedef
 
 This document covers the basics of using structs in C programming, including the use of `typedef` for easier struct management.
@@ -191,3 +228,45 @@ The `swap` function in this example exchanges the pointers `a` and `b`, changing
 
 Understanding pointers is crucial for effective C programming. This example illustrates how pointers can be used for dynamic memory management and manipulating data through memory addresses.
 
+# CS50 Course References
+
+## Official Course Materials
+- **CS50 Syllabus**: [CS50 Syllabus](https://cs50.harvard.edu/x/2023/syllabus/)
+- **Course Lectures**: [CS50 Lectures](https://cs50.harvard.edu/x/2023/weeks/)
+- **Problem Sets**: [CS50 Problem Sets](https://cs50.harvard.edu/x/2023/psets/)
+- **Shorts**: [CS50 Shorts](https://cs50.harvard.edu/x/2023/shorts/)
+
+## Study Resources
+- **CS50 Study**: [CS50 Study Resource](https://study.cs50.net/)
+- **CS50 Sandbox**: [CS50 Sandbox](https://sandbox.cs50.io/)
+- **CS50 IDE**: [CS50 Cloud9 IDE](https://ide.cs50.io/)
+
+## Supplementary Videos
+- **CS50 on YouTube**: [CS50 YouTube Channel](https://www.youtube.com/channel/UCcabW7890RKJzL968QWEykA)
+
+## Community and Support
+- **CS50 Reddit**: [CS50 on Reddit](https://www.reddit.com/r/cs50/)
+- **CS50 Discord**: [CS50 Discord Server](https://discord.gg/cs50)
+- **CS50 on EdX**: [CS50 on EdX](https://www.edx.org/course/cs50s-introduction-to-computer-science)
+
+## Reference Tools
+- **CS50 Reference**: [CS50 Reference](https://reference.cs50.net/)
+- **Style Guide**: [CS50 Style Guide](https://cs50.readthedocs.io/style/c/)
+
+## Additional Learning Tools
+- **CS50 Labs**: [CS50 Labs](https://cs50.harvard.edu/x/2023/labs/)
+- **CS50 FAQs**: [CS50 FAQs](https://cs50.harvard.edu/x/2023/faqs/)
+
+## Instructor Materials
+- **Lecture Notes**: Available through the [CS50 Video Descriptions](https://cs50.harvard.edu/x/2023/weeks/)
+- **Instructor Insights**: Insights and tips from CS50 instructors.
+
+## Assessment
+- **CS50's Test Tool**: [Check50](https://cs50.readthedocs.io/check50/)
+- **Submit50**: [Submit50 Guide](https://cs50.readthedocs.io/submit50/)
+
+## Contact and Help
+- **CS50 Office Hours**: Schedule and link available on the course website.
+
+## Licensing and Use
+- **CS50 License**: Information on the use and sharing of CS50 materials.
