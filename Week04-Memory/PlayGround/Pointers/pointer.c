@@ -21,7 +21,7 @@ int main(void)
     printf("*p: %i\n", *p);    // Correction needed: Use %i or %d to print the value pointed by 'p'.
     printf("p: %p\n", p);      // Correct: %p is used to print the address stored in 'p' (same as &n).
     printf("&p: %p\n", &p);    // Correct: %p is used to print the address of the pointer itself.
-
+ 
     printf("*c: %i\n", *c);
     printf("c: %p\n", c);  
     printf("&c: %p\n", &c);
