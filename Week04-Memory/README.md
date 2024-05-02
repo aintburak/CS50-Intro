@@ -179,7 +179,17 @@ To help visualize what the code is doing:
 This breakdown helps understand how pointers store and manipulate memory addresses in C programming.
 
 
+```c
+#include <stdio.h>
 
+int main(void)
+{
+    char *s = "HI!";
+    printf("%c\n", *s);
+    printf("%c\n", *(s + 1));
+    printf("%c\n", *(s + 2));
+} 
+```
 
 ---
 
