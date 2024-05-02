@@ -420,6 +420,59 @@ In this code, `strcmp(s, t)` returns `0` if the strings are identical. This is t
 
 
 
+# Using strcpy in C
+
+This document explains how to copy a string in C using direct assignment in a loop, which mimics the functionality of the `strcpy` function. We will also cover how to allocate memory dynamically for string operations.
+
+## Example: Manual String Copy
+
+Here's a complete example that demonstrates copying a string manually, including memory allocation and character-by-character copying:
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get a string
+    char *s = get_string("s: ");
+
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);  // Allocates enough memory for the string plus the null terminator
+
+    // Copy string into memory, including '\0'
+    for (int i = 0; i <= strlen(s); i++)
+    {
+        t[i] = s[i];  // Copy each character including the null terminator
+    }
+
+    // Capitalize the first character of the copy
+    if (t[0])  // Ensure there is a first character to capitalize
+        t[0] = toupper(t[0]);
+
+    // Print strings to compare them
+    printf("s: %s\n", s);
+    printf("t: %s\n", t);
+
+    // Free the allocated memory
+    free(t);
+}
+```
+
+## Key Points
+
+- **Memory Allocation**: `malloc(strlen(s) + 1)` is used to create a block of memory that is the length of the string `s` plus one for the null terminator (`\0`).
+- **Copying the String**: The `for` loop iterates through the string `s`, copying each character to `t`, including the null terminator at the end of the string.
+- **Modifying the Copy**: After copying, the first character of `t` is capitalized using `toupper`, demonstrating how copied strings can be independently modified.
+
+## Conclusion
+
+This example illustrates manual string copying in C. It demonstrates important concepts such as dynamic memory allocation, string manipulation, and proper memory management with `free`.
+
+
 
 
 
