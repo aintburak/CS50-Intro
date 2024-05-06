@@ -1,9 +1,12 @@
 #include "helpers.h"
 
 // Convert image to grayscale
-void grayscale(int height, int width, RGBTRIPLE image[height][width])
-{
-    return;
+void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
+    // Loop over all pixels
+
+        // Take average of red, green, and blue
+
+        // Update pixel values
 }
 
 // Convert image to sepia
