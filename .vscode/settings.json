@@ -12,7 +12,8 @@
         "__locale": "c",
         "string_view": "c",
         "initializer_list": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "helpers.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
