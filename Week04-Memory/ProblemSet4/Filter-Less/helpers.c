@@ -63,10 +63,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     }
 }
 
-// Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    // Create a copy of image
+    // Create a copy of the image
     RGBTRIPLE copy[height][width];
     for (int i = 0; i < height; i++)
     {
@@ -75,7 +74,42 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             copy[i][j] = image[i][j];
         }
     }
+
+    // Perform the blur on each pixel
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int totalRed = 0, totalGreen = 0, totalBlue = 0;
+            int count = 0;
+
+            // Sum up all the surrounding pixels' color values
+            for (int di = -1; di <= 1; di++)
+            {
+                for (int dj = -1; dj <= 1; dj++)
+                {
+                    int ni = i + di; // New row index
+                    int nj = j + dj; // New column index
+
+                    // Check if the new indices are within the valid range
+                    if (ni >= 0 && ni < height && nj >= 0 && nj < width)
+                    {
+                        totalRed += copy[ni][nj].rgbtRed;
+                        totalGreen += copy[ni][nj].rgbtGreen;
+                        totalBlue += copy[ni][nj].rgbtBlue;
+                        count++;
+                    }
+                }
+            }
+
+            // Calculate average color value
+            image[i][j].rgbtRed = totalRed / count;
+            image[i][j].rgbtGreen = totalGreen / count;
+            image[i][j].rgbtBlue = totalBlue / count;
+        }
+    }
 }
+
 
 void swap(RGBTRIPLE* a, RGBTRIPLE* b) {
     RGBTRIPLE temp = *a;
