@@ -28,14 +28,14 @@ int listSize(List list) {
 }
 
 
-int headOfList(List list) {
-
-
+int headOfList(List *list) {
+    return (list && list->head && list->head->next) ? list->head->next->value : -1;
 }
 
 
-int tailOfList(List list) {
 
+int tailOfList(List list) {
+    return ((list) && (list->tail) && (list->tail != list->head) && ()) ? list->tail->value : -1;
 }
 
 
