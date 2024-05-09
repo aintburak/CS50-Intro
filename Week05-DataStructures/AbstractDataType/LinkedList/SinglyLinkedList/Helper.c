@@ -43,15 +43,24 @@ int isEmptyList(List list) {
     return (list->size == 0);
 }
 
-
-struct Node *findValueOnList(List list,int value) {
-
+/*
+struct Node *findValueOnList(List list,int key) {
+    Node* iterator; // In fact, double pointer
+    iterator = list->head;
+    while(iterator->next != NULL) {
+        printf("--> %d ", iterator->value);
+    }
 }
 
 
-
+*/
 void displayList(List list) {
-
+    Node* iterator; // In fact, double pointer
+    iterator = list->head;
+    // meaning empty is also head == tail, but anyway why not 
+    while(!isEmptyList(list) && iterator != list->tail && iterator->next != NULL) { 
+        printf("--> %d ", iterator->value);
+    }
 
 }
 
@@ -70,4 +79,10 @@ void deleteFromList(List list, int value) {
 int getValueAtGivenIndex(List list, int index) {
 
 }
+
+
+void append(List list, int value) {
+
+}
+
 
