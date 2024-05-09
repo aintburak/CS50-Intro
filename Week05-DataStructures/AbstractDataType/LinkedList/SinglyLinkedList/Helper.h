@@ -3,17 +3,17 @@
 
 #include "Node.h"
 
-List CreateList(void);
-void MakeEmptyList(List);
-int ListSize(List);
-int HeadOfList(List);
-int TailOfList(List);
-int IsEmptyList(List);
-struct Node *findCode(List,int);
-void DisplayList(List);
-void InsertList(List,int,int);
-void DeleteList(List, int);
-void givenpos(List,int);
+List createList(void);
+void makeEmptyList(List);
+int listSize(List);
+int headOfList(List);
+int tailOfList(List);
+int isEmptyList(List);
+struct Node *findValueOnList(List,int);
+void displayList(List);
+void insertAtGivenIndex(List,int,int);
+void deleteList(List, int);
+int getValueAtGivenIndex(List,int);
 
 
 #endif // end of HELPER_H
