@@ -13,7 +13,9 @@
         "string_view": "c",
         "initializer_list": "c",
         "stdint.h": "c",
-        "helpers.h": "c"
+        "helpers.h": "c",
+        "helper.h": "c",
+        "node.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
