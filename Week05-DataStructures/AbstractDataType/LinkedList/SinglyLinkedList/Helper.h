@@ -3,8 +3,8 @@
 
 #include "Node.h"
 
-List createList(void);
 void makeEmptyList(List);
+List createList(void);
 int listSize(List);
 int headOfList(List);
 int tailOfList(List);

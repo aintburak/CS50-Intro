@@ -5,7 +5,7 @@ List createList() {
 	if (init == NULL)
 		printf("Out of memory!\n");
     else
-	    MakeEmptyList(l);
+	    makeEmptyList(init);
 
 	return init;
 }
@@ -13,13 +13,13 @@ List createList() {
 
 
 void makeEmptyList(List list) {
-    l->head = (struct Node *) malloc(sizeof(struct Node));
-        if (l->head == NULL)
+    list->head = (struct Node *) malloc(sizeof(struct Node));
+        if (list->head == NULL)
             printf("Out of memory!\n");
 
-    l->head->next = NULL;
-    l->tail = l->head;
-    l->size = 0;
+    list->head->next = NULL;
+    list->tail = list->head;
+    list->size = 0;
 }
 
 
@@ -28,14 +28,14 @@ int listSize(List list) {
 }
 
 
-int headOfList(List *list) {
+int headOfList(List list) {
     return (list && list->head && list->head->next) ? list->head->next->value : -1;
 }
 
 
 
 int tailOfList(List list) {
-    return ((list) && (list->tail) && (list->tail != list->head) && ()) ? list->tail->value : -1;
+    return ((list) && (list->tail) && (list->tail != list->head)) ? list->tail->value : -1;
 }
 
 
@@ -55,7 +55,7 @@ struct Node *findValueOnList(List list,int key) {
 
 */
 void displayList(List list) {
-    Node* iterator; // In fact, double pointer
+    Node iterator = (struct Node*) malloc(sizeof(struct Node)); // In fact, double pointer
     iterator = list->head;
     // meaning empty is also head == tail, but anyway why not 
     while(!isEmptyList(list) && iterator != list->tail && iterator->next != NULL) { 
@@ -78,6 +78,7 @@ void deleteFromList(List list, int value) {
 
 int getValueAtGivenIndex(List list, int index) {
 
+    return 0;
 }
 
 
