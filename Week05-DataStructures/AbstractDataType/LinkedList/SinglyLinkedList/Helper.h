@@ -12,7 +12,8 @@ int isEmptyList(List);
 struct Node *findValueOnList(List,int);
 void displayList(List);
 void insertAtGivenIndex(List,int,int);
-void deleteList(List, int);
+void deleteFromList(List, int);
+void deleteAllOccurrences(List, int);
 int getValueAtGivenIndex(List*,int);
 void append(List, int);
 

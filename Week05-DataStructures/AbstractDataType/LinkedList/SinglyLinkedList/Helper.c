@@ -141,7 +141,6 @@ void deleteFromList(List list, int value) {
     }
 }
 
-
 int getValueAtGivenIndex(List *list, int index) {
     if (index < 0 || index >= (*list)->size) {
         return -1; // Index out of bounds

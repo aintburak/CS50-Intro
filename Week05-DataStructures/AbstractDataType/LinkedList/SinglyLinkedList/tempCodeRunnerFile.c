@@ -1,1 +1,1 @@
-getValueAtGivenIndex
+deleteFromList
