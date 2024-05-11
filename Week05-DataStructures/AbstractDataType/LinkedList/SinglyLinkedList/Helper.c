@@ -51,9 +51,9 @@ struct Node *findValueOnList(List list,int key) {
         printf("--> %d ", iterator->value);
     }
 }
-
-
 */
+
+
 void displayList(List list) {
     Node iterator = (struct Node*) malloc(sizeof(struct Node)); // In fact, double pointer
     iterator = list->head;
