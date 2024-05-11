@@ -15,12 +15,11 @@ int main() {
 
     //insertAtGivenIndex(list,2,5);
         
-    int value = getValueAtGivenIndex(&list, 1);
-    printf("Value at index 1: %d\n", value);
-
-    printf("\n getValueAtGivenIndex(&list,1) -> %d\n\n", value);
+    //int value = getValueAtGivenIndex(&list, 1);
+    //printf("\n\nValue at index 1: %d\n\n", value);
+    printf("\n\n");
     displayList(list);
-    printf("\n");
+    printf("\n\n");
     printf("list->size : %d\n", list->size);
 
     return 0;

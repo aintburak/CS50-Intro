@@ -68,7 +68,7 @@ void displayList(List list) {
 }
 
 
-/*
+
 void insertAtGivenIndex(List list, int index, int value) {
     if(index < 0 || index > list->size - 1 ){
         printf("[Error] : Please enter a valid index. Index value should between 0 and %d", list->size - 1);
@@ -118,7 +118,6 @@ void insertAtGivenIndex(List list, int index, int value) {
 
 }
 
-*/
 
 void deleteFromList(List list, int value) {
 
