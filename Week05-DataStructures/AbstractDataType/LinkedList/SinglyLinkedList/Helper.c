@@ -141,6 +141,41 @@ void deleteFromList(List list, int value) {
     }
 }
 
+void deleteAllOccurrences(List list, int value) {
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
+    }
+
+    Node prev = list->head;  // Start with dummy head to simplify edge cases
+    Node current = list->head->next;
+
+    while (current != NULL) {
+        if (current->value == value) {
+            prev->next = current->next;  // Bypass the current node
+
+            // If deleting the tail node, update the tail pointer
+            if (current == list->tail) {
+                list->tail = prev;  // Update tail if last node is deleted
+            }
+
+            Node toDelete = current;  // Node to be freed
+            current = current->next;  // Move to next node
+
+            free(toDelete);  // Free the node to be deleted
+            list->size -= 1;
+
+            if (list->size == 0) {  // Check if list is empty now
+                list->tail = list->head;  // Reset tail to dummy head
+            }
+        } else {
+            prev = current;  // Move prev pointer
+            current = current->next;  // Move current pointer
+        }
+    }
+}
+
+
 int getValueAtGivenIndex(List *list, int index) {
     if (index < 0 || index >= (*list)->size) {
         return -1; // Index out of bounds
