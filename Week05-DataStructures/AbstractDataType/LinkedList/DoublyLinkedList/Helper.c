@@ -73,7 +73,7 @@ void insertAtGivenIndex(List list, int index, int value) {
 }
 
 
-// Function to delete the first occurrence of a node with a specific value from the list
+// Delete the first occurrence of a node with a specific value from the list
 void deleteFromList(List list, int value) {
     
 }
@@ -122,6 +122,17 @@ void append(List list, int value) {
 
 // Insert in front of the list
 void insert(List list, int value) {
+
+}
+
+// Replace first occurence of the source with given target
+void replace(List list, int source,int target) {
+
+}
+
+
+// Replace the all occurences of the source with given target
+void replaceAll(List list, int source,int target) {
 
 }
 
