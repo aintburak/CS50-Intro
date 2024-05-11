@@ -7,16 +7,17 @@ int main() {
     append(list,1);
     append(list,2);
     append(list,3);
+    append(list,4);
     printf("\n");
     displayList(list);
     printf("\n");
     printf("list->size : %d\n", list->size);
 
-    insertAtGivenIndex(list,1,5);
+    insertAtGivenIndex(list,2,5);
     printf("\n");
     displayList(list);
     printf("\n");
     printf("list->size : %d\n", list->size);
-    
+
     return 0;
 }

@@ -93,7 +93,19 @@ void insertAtGivenIndex(List list, int index, int value) {
 
         } else {
             // in middlewhere
+            if(i == index) {
+                
+                struct Node** current = &list->head->next;
+    
+                // Traverse the list
+                while ((*current) != NULL && (*current)->next->value !=  getValueAtGivenIndex(list, index)) {
+                    printf("%d -> ", (*current)->value); // Access the data part of the node pointed to by *current
+                    current = &(*current)->next; // Move to the next node by updating current to address of the next pointer
+                }
+                            
+                
 
+            }
 
 
         }
