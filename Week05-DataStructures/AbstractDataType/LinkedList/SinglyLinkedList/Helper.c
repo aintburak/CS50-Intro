@@ -131,9 +131,10 @@ int getValueAtGivenIndex(List *list, int index) {
     }
 
     Node current = (*list)->head->next; // Pointing to the first actual data node
-    int i = 0;
+    int i;
     for (i = 0; i < index; i++) {
         if (current == NULL) return -1; // Safety check if list is malformed
+        
         current = current->next; // Move to the next node
     }
     return current ? current->value : -1; // Return the value if current is not NULL
