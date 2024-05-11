@@ -10,6 +10,13 @@ int main() {
     printf("\n");
     displayList(list);
     printf("\n");
-    printf("It's working now !!");
+    printf("list->size : %d\n", list->size);
+
+    insertAtGivenIndex(list,1,5);
+    printf("\n");
+    displayList(list);
+    printf("\n");
+    printf("list->size : %d\n", list->size);
+    
     return 0;
 }

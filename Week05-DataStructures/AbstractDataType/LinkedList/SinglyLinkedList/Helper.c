@@ -70,6 +70,39 @@ void displayList(List list) {
 
 
 void insertAtGivenIndex(List list, int index, int value) {
+    if(index < 0 || index > list->size - 1 ){
+        printf("[Error] : Please enter a valid index. Index value should between 0 and %d", list->size - 1);
+    }
+
+    int i,j;
+    
+    Node newnode = (struct Node*) malloc(sizeof(struct Node));
+    newnode->value = value;
+    newnode->next = NULL; // make null temporarily
+    for(i = 0; i < list->size; i++) {
+        if(index == 0) {
+            // insert after head
+            newnode->next = list->head->next;
+            list->head->next = newnode;
+            
+
+        } else if(index == list->size - 1) {
+            // at the tail
+            list->tail->next = newnode;
+
+
+        } else {
+            // in middlewhere
+
+
+
+        }
+    }
+    // increase the size
+    list->size += 1;
+
+    // free allocated memory
+    free(newnode);
 
 }
 
@@ -102,6 +135,7 @@ void append(List list, int value) {
         list->tail = newnode;
     }
     list->size += 1;
+    free(newnode);
 }
 
 
