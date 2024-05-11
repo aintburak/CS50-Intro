@@ -55,12 +55,15 @@ struct Node *findValueOnList(List list,int key) {
 
 
 void displayList(List list) {
-    Node iterator = (struct Node*) malloc(sizeof(struct Node)); // In fact, double pointer
-    iterator = list->head;
+    Node iterator; // In fact, double pointer
+    iterator = list->head->next;
     // meaning empty is also head == tail, but anyway why not 
-    while(!isEmptyList(list) && iterator != list->tail && iterator->next != NULL) { 
+    printf("head");
+    while(iterator != NULL) { 
         printf("--> %d ", iterator->value);
+        iterator = iterator->next;
     }
+    printf("as tail");
 
 }
 
@@ -84,6 +87,21 @@ int getValueAtGivenIndex(List list, int index) {
 
 void append(List list, int value) {
 
+    // create new node :)
+    Node newnode = (struct Node*) malloc(sizeof(struct Node));
+    newnode->value = value;
+    newnode->next = NULL;
+    
+    if(isEmptyList(list)) {
+        // if list is empty
+        list->head->next = newnode;
+        list->tail = newnode;
+    } else {   
+        // if list is NOT empty meaning we have already items in the list
+        list->tail->next = newnode;
+        list->tail = newnode;
+    }
+    list->size += 1;
 }
 
 
