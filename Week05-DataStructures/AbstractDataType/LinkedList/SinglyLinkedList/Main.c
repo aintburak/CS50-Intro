@@ -21,6 +21,11 @@ int main() {
     displayList(list);
     printf("\n\n");
     printf("list->size : %d\n", list->size);
+    deleteFromList(list,3);
+
+    printf("\n\n");
+    displayList(list);
+    printf("\n\n");
 
     return 0;
 }

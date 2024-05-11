@@ -105,35 +105,39 @@ void insertAtGivenIndex(List list, int index, int value) {
 }
 
 
-
+// Function to delete the first occurrence of a node with a specific value from the list
 void deleteFromList(List list, int value) {
-    if (list == NULL || list->head == NULL) {
-        return;  // Safety check to ensure the list and list head are not NULL
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
     }
 
-    Node **current = &list->head->next;  // Start from the first actual data node
-    while (*current != NULL) {
-        if ((*current)->value == value) {
-            Node *temp = *current;  // Temporarily hold the node to be deleted
-            *current = temp->next;  // Unlink the node from the list
+    Node prev = list->head;  // Dummy head to simplify edge cases
+    Node current = list->head->next;
 
-            if (temp == list->tail) {
-                list->tail = (temp == list->head->next) ? list->head : temp;  // Update tail if necessary
-            }
+    while (current != NULL && current->value != value) {
+        prev = current;
+        current = current->next;
+    }
 
-            free(temp);  // Free the memory of the node
+    if (current == NULL) {
+        printf("Value not found in list.\n");
+        return;  // Value not found
+    }
 
-            // If we want to remove all instances, do not return; just continue the loop
-            // return;  // Return if you want to delete only the first occurrence found
+    // Update links
+    prev->next = current->next;
 
-            // Decrease the size of the list
-            list->size--;
+    // If deleting the tail node, update the tail pointer
+    if (current == list->tail) {
+        list->tail = prev;
+    }
 
-            // If you remove the return statement, comment the following line to maintain the current position
-            continue;
-        } else {
-            current = &(*current)->next;  // Move to the next node
-        }
+    free(current);  // Free the node to be deleted
+    list->size -= 1;
+
+    if (list->size == 0) {  // Reset tail if list is empty
+        list->tail = list->head;  // Dummy head acts as tail
     }
 }
 
