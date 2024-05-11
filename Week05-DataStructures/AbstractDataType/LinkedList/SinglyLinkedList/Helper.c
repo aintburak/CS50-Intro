@@ -68,7 +68,7 @@ void displayList(List list) {
 }
 
 
-
+/*
 void insertAtGivenIndex(List list, int index, int value) {
     if(index < 0 || index > list->size - 1 ){
         printf("[Error] : Please enter a valid index. Index value should between 0 and %d", list->size - 1);
@@ -98,7 +98,7 @@ void insertAtGivenIndex(List list, int index, int value) {
                 struct Node** current = &list->head->next;
     
                 // Traverse the list
-                while ((*current) != NULL && (*current)->next->value !=  getValueAtGivenIndex(list, index)) {
+                while ((*current) != NULL && (*current)->next->value != getValueAtGivenIndex(list, index)) {
                     printf("%d -> ", (*current)->value); // Access the data part of the node pointed to by *current
                     current = &(*current)->next; // Move to the next node by updating current to address of the next pointer
                 }
@@ -118,36 +118,42 @@ void insertAtGivenIndex(List list, int index, int value) {
 
 }
 
+*/
 
 void deleteFromList(List list, int value) {
 
 }
 
 
-int getValueAtGivenIndex(List list, int index) {
+int getValueAtGivenIndex(List *list, int index) {
+    if (index < 0 || index >= (*list)->size) {
+        return -1; // Index out of bounds
+    }
 
-    return 0;
+    Node current = (*list)->head->next; // Pointing to the first actual data node
+    int i = 0;
+    for (i = 0; i < index; i++) {
+        if (current == NULL) return -1; // Safety check if list is malformed
+        current = current->next; // Move to the next node
+    }
+    return current ? current->value : -1; // Return the value if current is not NULL
 }
 
 
-void append(List list, int value) {
 
-    // create new node :)
+
+void append(List list, int value) {
     Node newnode = (struct Node*) malloc(sizeof(struct Node));
     newnode->value = value;
     newnode->next = NULL;
     
-    if(isEmptyList(list)) {
-        // if list is empty
-        list->head->next = newnode;
-        list->tail = newnode;
-    } else {   
-        // if list is NOT empty meaning we have already items in the list
-        list->tail->next = newnode;
-        list->tail = newnode;
+    if (isEmptyList(list)) {
+        list->head->next = newnode; // Linking the first node after dummy
+    } else {
+        list->tail->next = newnode; // Appending to the end of the list
     }
+    list->tail = newnode; // Updating the tail pointer
     list->size += 1;
-    free(newnode);
 }
 
 

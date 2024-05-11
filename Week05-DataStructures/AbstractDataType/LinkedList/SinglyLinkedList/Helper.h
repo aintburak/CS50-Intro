@@ -13,7 +13,7 @@ struct Node *findValueOnList(List,int);
 void displayList(List);
 void insertAtGivenIndex(List,int,int);
 void deleteList(List, int);
-int getValueAtGivenIndex(List,int);
+int getValueAtGivenIndex(List*,int);
 void append(List, int);
 
 #endif // end of HELPER_H
