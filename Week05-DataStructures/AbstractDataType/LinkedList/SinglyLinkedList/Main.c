@@ -13,7 +13,7 @@ int main() {
     printf("\n");
     printf("list->size : %d\n", list->size);
 
-    insertAtGivenIndex(list,2,5);
+    insertAtGivenIndex(list,3,5);
         
     //int value = getValueAtGivenIndex(&list, 1);
     //printf("\n\nValue at index 1: %d\n\n", value);

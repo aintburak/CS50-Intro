@@ -107,7 +107,34 @@ void insertAtGivenIndex(List list, int index, int value) {
 
 
 void deleteFromList(List list, int value) {
+    if (list == NULL || list->head == NULL) {
+        return;  // Safety check to ensure the list and list head are not NULL
+    }
 
+    Node **current = &list->head->next;  // Start from the first actual data node
+    while (*current != NULL) {
+        if ((*current)->value == value) {
+            Node *temp = *current;  // Temporarily hold the node to be deleted
+            *current = temp->next;  // Unlink the node from the list
+
+            if (temp == list->tail) {
+                list->tail = (temp == list->head->next) ? list->head : temp;  // Update tail if necessary
+            }
+
+            free(temp);  // Free the memory of the node
+
+            // If we want to remove all instances, do not return; just continue the loop
+            // return;  // Return if you want to delete only the first occurrence found
+
+            // Decrease the size of the list
+            list->size--;
+
+            // If you remove the return statement, comment the following line to maintain the current position
+            continue;
+        } else {
+            current = &(*current)->next;  // Move to the next node
+        }
+    }
 }
 
 
