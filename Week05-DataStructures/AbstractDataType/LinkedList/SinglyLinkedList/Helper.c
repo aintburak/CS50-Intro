@@ -55,17 +55,21 @@ struct Node *findValueOnList(List list,int key) {
 
 
 void displayList(List list) {
-    Node iterator; // In fact, double pointer
-    iterator = list->head->next;
-    // meaning empty is also head == tail, but anyway why not 
-    printf("head");
-    while(iterator != NULL) { 
-        printf("--> %d ", iterator->value);
+    if (list == NULL || list->head == NULL) {
+        printf("List or list head is NULL\n");
+        return;
+    }
+
+    Node iterator = list->head->next; // Start from the first actual node (skip dummy head)
+
+    printf("Head");
+    while (iterator != NULL) {
+        printf(" --> %d", iterator->value);
         iterator = iterator->next;
     }
-    printf("as tail");
-
+    printf(" -- as tail\n");
 }
+
 
 
 void insertAtGivenIndex(List list, int index, int value) {
