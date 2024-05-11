@@ -68,55 +68,38 @@ void displayList(List list) {
 }
 
 
-
 void insertAtGivenIndex(List list, int index, int value) {
-    if(index < 0 || index > list->size - 1 ){
-        printf("[Error] : Please enter a valid index. Index value should between 0 and %d", list->size - 1);
+    if (index < 0 || index > list->size) {
+        printf("[Error]: Please enter a valid index. Index value should be between 0 and %d\n", list->size);
+        return; // Properly exit if index is invalid
     }
 
-    int i,j;
-    
-    Node newnode = (struct Node*) malloc(sizeof(struct Node));
+    int i;
+    Node newnode = (Node) malloc(sizeof(struct Node));
+    if (newnode == NULL) {
+        printf("Failed to allocate memory for new node.\n");
+        return;
+    }
     newnode->value = value;
-    newnode->next = NULL; // make null temporarily
-    for(i = 0; i < list->size; i++) {
-        if(index == 0) {
-            // insert after head
-            newnode->next = list->head->next;
-            list->head->next = newnode;
-            
+    newnode->next = NULL;
 
-        } else if(index == list->size - 1) {
-            // at the tail
-            list->tail->next = newnode;
-
-
-        } else {
-            // in middlewhere
-            if(i == index) {
-                
-                struct Node** current = &list->head->next;
-    
-                // Traverse the list
-                while ((*current) != NULL && (*current)->next->value != getValueAtGivenIndex(list, index)) {
-                    printf("%d -> ", (*current)->value); // Access the data part of the node pointed to by *current
-                    current = &(*current)->next; // Move to the next node by updating current to address of the next pointer
-                }
-                            
-                
-
-            }
-
-
-        }
+    Node *current = &list->head->next;
+    for (i = 0; i < index; i++) {
+        current = &(*current)->next;
     }
-    // increase the size
+
+    // Insert new node at the correct position
+    newnode->next = *current;
+    *current = newnode;
+
+    // Adjust the tail if needed
+    if (index == list->size) {
+        list->tail = newnode;
+    }
+
     list->size += 1;
-
-    // free allocated memory
-    free(newnode);
-
 }
+
 
 
 void deleteFromList(List list, int value) {
@@ -144,6 +127,10 @@ int getValueAtGivenIndex(List *list, int index) {
 
 void append(List list, int value) {
     Node newnode = (struct Node*) malloc(sizeof(struct Node));
+    if (newnode == NULL) {
+        printf("Failed to allocate memory for new node.\n");
+        return;
+    }
     newnode->value = value;
     newnode->next = NULL;
     
