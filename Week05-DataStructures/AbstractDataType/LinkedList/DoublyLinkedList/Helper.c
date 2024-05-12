@@ -58,13 +58,26 @@ void displayList(List list) {
 
     printf("Head");
     while (iterator != NULL) {
-        printf(" --> %d", iterator->value);
+        printf(" <--> %d", iterator->value);
         iterator = iterator->next;
     }
     printf(" -- as tail\n");
 }
 
 void displayListReversed(List list) {
+    if(list == NULL || list->head == NULL) {
+        printf("List or list head is NULL\n");
+        return;
+    }
+    Node iterator = list->tail;
+    printf("Tail as -- ");
+
+    while(iterator != list->head) {
+        printf(" %d <--> ", iterator->value);
+        iterator = iterator->previous;
+    }
+
+    printf("Head");
 
 }
 
@@ -109,10 +122,13 @@ void append(List list, int value) {
     }
     newnode->value = value;
     newnode->next = NULL;
+    newnode->previous = NULL;
     
     if (isEmptyList(list)) {
-        list->head->next = newnode; // Linking the first node after dummy
+        newnode->previous = list->head;
+        list->head->next = newnode; // Linking the first node after dummy 
     } else {
+        newnode->previous = list->tail;
         list->tail->next = newnode; // Appending to the end of the list
     }
     list->tail = newnode; // Updating the tail pointer
