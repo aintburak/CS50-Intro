@@ -20,7 +20,9 @@ int main() {
     append(list,4);
     insert(list,4);
 
-    deleteAllOccurrences(list,4);
+    //deleteAllOccurrences(list,4);
+
+    replaceAll(list,4,3);
   
     printf("\n---\nDisplay List:\n");
     displayList(list);

@@ -287,9 +287,30 @@ void replace(List list, int source, int target) {
 
 
 
-// Replace the all occurences of the source with given target
-void replaceAll(List list, int source,int target) {
+// Replace all occurrences of the source with the given target
+void replaceAll(List list, int source, int target) {
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
+    }
 
+    Node current = list->head->next; // Start from the first actual node
+    int replaced = 0; // Counter to track replacements
+
+    while (current != NULL) {
+        if (current->value == source) {
+            current->value = target;
+            replaced++;
+        }
+        current = current->next;
+    }
+
+    if (replaced == 0) {
+        printf("Source value not found in the list.\n");
+    } else {
+        printf("%d occurrences replaced.\n", replaced);
+    }
 }
+
 
 
