@@ -106,6 +106,7 @@ void insertAtGivenIndex(List list, int index, int value) {
 
     // Insert new node at the correct position
     newnode->next = *current;
+    newnode->previous = (*current)->previous;
     *current = newnode;
 
     // Adjust the tail if needed
@@ -114,6 +115,7 @@ void insertAtGivenIndex(List list, int index, int value) {
     }
 
     list->size += 1;
+    
 }
 
 

@@ -11,14 +11,13 @@ int main() {
     append(list,4);
     
     printf("\n---\nDisplay List:\n");
-
     displayList(list);
+    printf("\n\n---\n\n");
 
-    printf("\n---\nReverse Display List:\n");
+    insertAtGivenIndex(list,1,7);
 
-
-    displayListReversed(list);
-
+    printf("\n---\nDisplay List:\n");
+    displayList(list);
     printf("\n\n---\n\n");
 
     return 0;
