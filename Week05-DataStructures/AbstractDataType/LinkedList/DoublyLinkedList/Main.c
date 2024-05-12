@@ -20,11 +20,7 @@ int main() {
     displayList(list);
     printf("\n\n---\n\n");
 
-    deleteFromList(list,7);
     
-    printf("\n---\nDisplay List:\n");
-    displayList(list);
-    printf("\n\n---\n\n");
     
     return 0;
 }
