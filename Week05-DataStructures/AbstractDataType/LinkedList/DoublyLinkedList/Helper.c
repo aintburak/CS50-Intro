@@ -18,6 +18,7 @@ void makeEmptyList(List list) {
             printf("Out of memory!\n");
 
     list->head->next = NULL;
+    list->head->previous = NULL;
     list->tail = list->head;
     list->size = 0;
 }
@@ -81,8 +82,38 @@ void displayListReversed(List list) {
 
 }
 
+// insert value at given index
 void insertAtGivenIndex(List list, int index, int value) {
-    
+    if (index < 0 || index > list->size) {
+        printf("[Error]: Please enter a valid index. Index value should be between 0 and %d\n", list->size);
+        return; // Properly exit if index is invalid
+    }
+
+    int i;
+    Node newnode = (Node) malloc(sizeof(struct Node));
+    if (newnode == NULL) {
+        printf("Failed to allocate memory for new node.\n");
+        return;
+    }
+    newnode->value = value;
+    newnode->next = NULL;
+    newnode->previous = NULL;
+
+    Node *current = &list->head->next;
+    for (i = 0; i < index; i++) {
+        current = &(*current)->next;
+    }
+
+    // Insert new node at the correct position
+    newnode->next = *current;
+    *current = newnode;
+
+    // Adjust the tail if needed
+    if (index == list->size) {
+        list->tail = newnode;
+    }
+
+    list->size += 1;
 }
 
 
@@ -140,6 +171,8 @@ void append(List list, int value) {
 void insert(List list, int value) {
 
 }
+
+
 
 // Replace first occurence of the source with given target
 void replace(List list, int source,int target) {
