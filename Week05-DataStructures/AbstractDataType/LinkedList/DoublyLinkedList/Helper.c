@@ -266,10 +266,25 @@ void insert(List list, int value) {
 
 
 
-// Replace first occurence of the source with given target
-void replace(List list, int source,int target) {
+// Replace the first occurrence of the source with the given target
+void replace(List list, int source, int target) {
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
+    }
 
+    Node current = list->head->next; // Start from the first actual node
+    while (current != NULL) {
+        if (current->value == source) {
+            current->value = target;
+            return; // Exit after replacing the first occurrence
+        }
+        current = current->next;
+    }
+
+    printf("Source value not found in the list.\n");
 }
+
 
 
 // Replace the all occurences of the source with given target
