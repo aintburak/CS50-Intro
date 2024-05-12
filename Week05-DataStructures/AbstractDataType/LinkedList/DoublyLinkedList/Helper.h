@@ -18,5 +18,7 @@ void deleteAllOccurrences(List, int);
 int getValueAtGivenIndex(List*,int);
 void append(List, int);
 void insert(List, int);
+void replace(List, int,int);
+void replaceAll(List, int,int);
 
 #endif // end of HELPER_H
