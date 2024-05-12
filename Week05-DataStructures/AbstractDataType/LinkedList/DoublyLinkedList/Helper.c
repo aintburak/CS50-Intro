@@ -141,8 +141,13 @@ void deleteFromList(List list, int value) {
 
     // Update links
 
-    /***** TO DO *****/
+    
+    current->next->previous = current->previous;
     prev->next = current->next;
+
+    // make current's links free
+    current->next = NULL;
+    current->previous = NULL;
 
     // If deleting the tail node, update the tail pointer
     if (current == list->tail) {
