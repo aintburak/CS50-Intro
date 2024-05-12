@@ -15,7 +15,13 @@ int main() {
     printf("\n\n---\n\n");
 
     insertAtGivenIndex(list,1,7);
+    insert(list,8);
+    insert(list,9);
+    append(list,4);
+    insert(list,4);
 
+    deleteAllOccurrences(list,4);
+  
     printf("\n---\nDisplay List:\n");
     displayList(list);
     printf("\n\n---\n\n");

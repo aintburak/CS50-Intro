@@ -162,9 +162,48 @@ void deleteFromList(List list, int value) {
     }
 }
 
+// Delete all occurrences of a node with a specific value from the list
 void deleteAllOccurrences(List list, int value) {
-    
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
+    }
+
+    Node current = list->head->next;  // Start from the first actual node
+
+    while (current != NULL) {
+        if (current->value == value) {
+            Node toDelete = current;
+            current = current->next;  // Move to the next node before deleting
+
+            // Update the links
+            if (toDelete->next != NULL) {
+                toDelete->next->previous = toDelete->previous;
+            }
+            if (toDelete->previous != NULL) {
+                toDelete->previous->next = toDelete->next;
+            }
+
+            // Update tail if necessary
+            if (toDelete == list->tail) {
+                list->tail = toDelete->previous;
+            }
+
+            // Free the node
+            free(toDelete);
+            list->size -= 1;
+
+            // Check if the list becomes empty
+            if (list->size == 0) {
+                list->head->next = NULL;  // Reset the list
+                list->tail = list->head;  // Dummy head acts as tail
+            }
+        } else {
+            current = current->next;  // Move to the next node if not deleting
+        }
+    }
 }
+
 
 
 int getValueAtGivenIndex(List *list, int index) {
@@ -209,7 +248,20 @@ void append(List list, int value) {
 
 // Insert in front of the list
 void insert(List list, int value) {
+    Node newnode = (struct Node*) malloc(sizeof(struct Node));
+    if (newnode == NULL) {
+        printf("Failed to allocate memory for new node.\n");
+        return;
+    }
+    newnode->value = value;
+    newnode->next = list->head->next;
+    newnode->previous = list->head;
+    list->head->next = newnode; // Linking the first node after dummy 
 
+    if (isEmptyList(list)) {
+        list->tail = newnode; // Updating the tail pointer
+    }
+    list->size += 1;
 }
 
 
