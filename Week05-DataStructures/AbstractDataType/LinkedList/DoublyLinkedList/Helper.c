@@ -121,7 +121,40 @@ void insertAtGivenIndex(List list, int index, int value) {
 
 // Delete the first occurrence of a node with a specific value from the list
 void deleteFromList(List list, int value) {
-    
+    if (list == NULL || list->head == NULL || list->head->next == NULL) {
+        printf("List is empty or not initialized.\n");
+        return;
+    }
+
+    Node prev = list->head;  // Dummy head to simplify edge cases
+    Node current = list->head->next;
+
+    while (current != NULL && current->value != value) {
+        prev = current;
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf("Value not found in list.\n");
+        return;  // Value not found
+    }
+
+    // Update links
+
+    /***** TO DO *****/
+    prev->next = current->next;
+
+    // If deleting the tail node, update the tail pointer
+    if (current == list->tail) {
+        list->tail = prev;
+    }
+
+    free(current);  // Free the node to be deleted
+    list->size -= 1;
+
+    if (list->size == 0) {  // Reset tail if list is empty
+        list->tail = list->head;  // Dummy head acts as tail
+    }
 }
 
 void deleteAllOccurrences(List list, int value) {
