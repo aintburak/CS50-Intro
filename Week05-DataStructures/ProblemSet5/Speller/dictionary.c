@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>  // Include for strcasecmp
 
 #include "dictionary.h"
 
@@ -63,7 +64,7 @@ bool load(const char *dictionary)
         return false;
     }
 
-    char buffer[N];
+    char buffer[LENGTH + 1];
     
     // Read each word in the file
     while(fscanf(file, "%s", buffer) != EOF) 
@@ -84,11 +85,11 @@ bool load(const char *dictionary)
         unsigned int index = hash(word);
         
         // Insert node into hash table at index
-        if (hash_table[index] == NULL) {
-            hash_table[index] = newnode;
+        if (table[index] == NULL) {
+            table[index] = newnode;
         } else {
-            newnode->next = hash_table[index];
-            hash_table[index] = newnode;
+            newnode->next = table[index];
+            table[index] = newnode;
         }
 
         wordCount++; // Increment word count
