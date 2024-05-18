@@ -44,7 +44,6 @@ bool check(const char *word)
 }
 
 
-
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
@@ -72,24 +71,24 @@ bool load(const char *dictionary)
         // Create and isolate newnode
         
         node* newnode = (struct node*)malloc(sizeof(node));
-        if (new_node == NULL) {
+        if (newnode == NULL) {
             printf("Memory allocation failed.\n");
             fclose(file);
             return false;
         }
         // Add each word to the hash table
 
-        strcpy(new_node->word, word);
-        new_node->next = NULL;
+        strcpy(newnode->word, word);
+        newnode->next = NULL;
         
         unsigned int index = hash(word);
         
         // Insert node into hash table at index
         if (hash_table[index] == NULL) {
-            hash_table[index] = new_node;
+            hash_table[index] = newnode;
         } else {
-            new_node->next = hash_table[index];
-            hash_table[index] = new_node;
+            newnode->next = hash_table[index];
+            hash_table[index] = newnode;
         }
 
         wordCount++; // Increment word count
