@@ -25,60 +25,18 @@ bool check(const char *word)
     return false;
 }
 
-
-// Improved hash function using djb2 algorithm
-unsigned int hash(const char *word) {
-    unsigned long hash = 5381;
-    int c;
-
-    while ((c = *word++)) {
-        c = tolower(c); // Make the function case-insensitive
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
-    }
-
-    return hash % HASH_TABLE_SIZE;
+// Hashes word to a number
+unsigned int hash(const char *word)
+{
+    // TODO: Improve this hash function
+    return toupper(word[0]) - 'A';
 }
 
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
 {
-    int wordCount = 0;
-    // Open the dictionary file
-    FILE *file = fopen(dictionary, "r");
-    if (file == NULL) {
-        printf("Could not open %s.\n", dictionary);
-        return false;
-    }
-
-    char word[MAX_WORD_LENGTH + 1]; // Buffer to hold each word
-
-    /*
-        Since maximum length for a word is 45 determined in dictionary.h
-        (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
-    */
-
-   while(fscanf(file, "%45s", world) != EOF) {
-
-    // Allocate memory for a new node
-    node *new_node = malloc(sizeof(node));
-    if (new_node == NULL) {
-        printf("Memory allocation failed.\n");
-        fclose(file);
-        return false;
-    }
-    
-    // Copy the word into the new node
-    strcpy(new_node->word, word);
-    new_node->next = NULL;
-
-    // Get the hash value for the word
-    unsigned int index = hash(word);
-
-
-   }
-   
-    // Close the dictionary file
-    fclose(file);
+    // TODO
+    return false;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
