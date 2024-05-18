@@ -25,11 +25,18 @@ bool check(const char *word)
     return false;
 }
 
-// Hashes word to a number
-unsigned int hash(const char *word)
-{
-    // TODO: Improve this hash function
-    return toupper(word[0]) - 'A';
+
+// Improved hash function using djb2 algorithm
+unsigned int hash(const char *word) {
+    unsigned long hash = 5381;
+    int c;
+
+    while ((c = *word++)) {
+        c = tolower(c); // Make the function case-insensitive
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+
+    return hash % HASH_TABLE_SIZE;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
@@ -60,6 +67,12 @@ bool load(const char *dictionary)
         return false;
     }
     
+    // Copy the word into the new node
+    strcpy(new_node->word, word);
+    new_node->next = NULL;
+
+    // Get the hash value for the word
+    unsigned int index = hash(word);
 
 
    }
