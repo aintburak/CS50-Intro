@@ -45,6 +45,24 @@ bool load(const char *dictionary)
 
     char word[MAX_WORD_LENGTH + 1]; // Buffer to hold each word
 
+    /*
+        Since maximum length for a word is 45 determined in dictionary.h
+        (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
+    */
+
+   while(fscanf(file, "%45s", world) != EOF) {
+
+    // Allocate memory for a new node
+    node *new_node = malloc(sizeof(node));
+    if (new_node == NULL) {
+        printf("Memory allocation failed.\n");
+        fclose(file);
+        return false;
+    }
+    
+
+
+   }
    
     // Close the dictionary file
     fclose(file);
