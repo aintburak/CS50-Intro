@@ -25,19 +25,33 @@ unsigned int wordCount = 0; // Global variable to track the number of words load
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    int i;
-
-    for(i = 0; i < N; i++) {
-        
+    // Hash the word to find the appropriate bucket
+    unsigned int index = hash(word);
+    
+    // Traverse the linked list at this index
+    node *cursor = table[index];
+    while (cursor != NULL)
+    {
+        // Compare the word with the word in the current node, case-insensitively
+        if (strcasecmp(cursor->word, word) == 0)
+        {
+            return true;
+        }
+        cursor = cursor->next;
     }
-    return false;
+    
+    return false; // Word not found
 }
+
+
 
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
     return toupper(word[0]) - 'A';
 }
+
+
 
 // Loads dictionary into memory, returning true if successful, else false
 bool load(const char *dictionary)
@@ -87,6 +101,9 @@ bool load(const char *dictionary)
 
     return true;
 }
+
+
+
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
@@ -96,6 +113,19 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
-    return false;
+    unsigned int i;
+    // Iterate over each bucket
+    for (i = 0; i < N; i++)
+    {
+        // Traverse the linked list at table[i]
+        node *cursor = table[i];
+        while (cursor != NULL)
+        {
+            node *tmp = cursor;
+            cursor = cursor->next;
+            free(tmp);
+        }
+    }
+
+    return true;
 }
