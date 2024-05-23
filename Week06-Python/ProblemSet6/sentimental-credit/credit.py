@@ -2,25 +2,28 @@ def promtUser():
     # Prompt user for the amount of change owed
     while True:
         try:
-            cardNumber = int(input("Number: "))
-            if cardNumber >= 0:
+            cardNumber = str(input("Number: "))
+            if int(cardNumber) >= 0:
                 break
         except ValueError:
             continue
     return cardNumber
 
 
+def returnEveryOtherDigit(cardNumber):
+    # Use slicing to get every other digit
+    return str(cardNumber)[-2::-2]
 
 
 def luhnsAlgorithm(cardNumber):
     # Luhn's Algorithm
-    for i in str(cardNumber):
-        print(i)
+    everyOtherDigit = returnEveryOtherDigit(cardNumber)
+    print(everyOtherDigit)
+    
 
 def main():
-    numb = promtUser()
-    print(f"{numb}")
-    luhnsAlgorithm(numb)
+    cardNumber = promtUser()
+    luhnsAlgorithm(cardNumber)
 
 
 
