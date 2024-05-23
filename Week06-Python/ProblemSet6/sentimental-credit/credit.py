@@ -47,7 +47,18 @@ def luhnsAlgorithm(cardNumber):
         return True
     else:
         return False
-    
+
+
+def get_card_type(card_number):
+    # Check the card type based on its prefix and length
+    if card_number.startswith(('51', '52', '53', '54', '55')) and len(card_number) == 16:
+        return "MASTERCARD"
+    elif card_number.startswith(('34', '37')) and len(card_number) == 15:
+        return "AMEX"
+    elif card_number.startswith('4') and len(card_number) in {13, 16}:
+        return "VISA"
+    else:
+        return "INVALID"
 
 def main():
     cardNumber = "4003600000000014"
