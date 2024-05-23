@@ -34,14 +34,12 @@ def luhnsAlgorithm(cardNumber):
     everyOtherDigit = str(returnEveryOtherDigit(cardNumber))
     for i in everyOtherDigit:
         sum+= sumDigits(2*int(i))
-        print(f"numb: {2*int(i)} numb[:]-> {str(2*int(i))[::1]} sum -> {sum}")
     
     remainingDigit = returnRemainingDigit(cardNumber)
     
     for j in remainingDigit:
         sum+= int(j)
     
-    print(f"sum: {sum}")
 
     if sum % 10 == 0:
         return True
@@ -49,31 +47,26 @@ def luhnsAlgorithm(cardNumber):
         return False
 
 
-def get_card_type(card_number):
+def getCardType(cardNumber):
     # Check the card type based on its prefix and length
-    if card_number.startswith(('51', '52', '53', '54', '55')) and len(card_number) == 16:
+    if cardNumber.startswith(('51', '52', '53', '54', '55')) and len(cardNumber) == 16:
         return "MASTERCARD"
-    elif card_number.startswith(('34', '37')) and len(card_number) == 15:
+    elif cardNumber.startswith(('34', '37')) and len(cardNumber) == 15:
         return "AMEX"
-    elif card_number.startswith('4') and len(card_number) in {13, 16}:
+    elif cardNumber.startswith('4') and len(cardNumber) in {13, 16}:
         return "VISA"
     else:
         return "INVALID"
 
 def main():
     cardNumber = "4003600000000014"
-    print(luhnsAlgorithm(cardNumber))
-    
-
+    # print(luhnsAlgorithm(cardNumber))
+        
+    # Check if the card number is valid according to Luhn's Algorithm
     if luhnsAlgorithm(cardNumber):
-        if (cardNumber[:2] in {'51', '52', '53', '54', '55'}) and (len(cardNumber) == 16):
-            print("MASTERCARD")
-        elif (cardNumber[:2] in {'34', '37'}) and (len(cardNumber) == 15):
-            print("AMEX")
-        elif (cardNumber[:1] in {'4'}) and (str(len(cardNumber)) in {'13', '16'}):
-            print("VISA")
-        else:
-            print("INVALID")
+        # Get the card type
+        cardType = getCardType(cardNumber)
+        print(cardType)
     else:
         print("INVALID")
 
