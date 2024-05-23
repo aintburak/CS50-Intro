@@ -59,7 +59,7 @@ def getCardType(cardNumber):
         return "INVALID"
 
 def main():
-    cardNumber = "4003600000000014"
+    cardNumber = promtUser() # "4003600000000014"
     # print(luhnsAlgorithm(cardNumber))
         
     # Check if the card number is valid according to Luhn's Algorithm
