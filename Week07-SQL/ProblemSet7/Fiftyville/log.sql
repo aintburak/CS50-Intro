@@ -1,10 +1,12 @@
 .tables
 
+/*
 .schema bakery_security_logs
 
 .schema bank_accounts
 
 .schema atm_transactions
+*/
 
 
 
@@ -133,12 +135,7 @@ WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
 AND day = 28 AND month = 07;
 */
 
-SELECT * FROM atm_transactions AS atm
-JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
-JOIN people as ppl ON ppl.id = ba.person_id
-WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
-AND day = 28 AND month = 7
-AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 07 AND hour = 10 AND minute BETWEEN 10 AND 30 );
+
 
 
 /*
@@ -146,6 +143,16 @@ AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE 
 
 
 ATM WİTHDRAWALS --> ACCOUNT_NUMB ---> PERSON ID --> PEOPLE  TABLE --> NAME >>> DONE!
+
+
+PEOPLE --> PHONE CALL > 1 MINUTE (60) ON day = 28 AND month = 07;
+
+SELECT * FROM people AS ppl
+JOIN phone_calls AS pc ON pc.caller = ppl.phone_number
+WHERE pc.duration <= 60
+AND day = 28 AND month = 7;
+
+
 
 CHECK THIS NAME IS INCLUDED FIRST FLIGHT ON 29th of JULY !
 
@@ -156,3 +163,74 @@ CHECK THIS NAME IS INCLUDED FIRST FLIGHT ON 29th of JULY !
 AND THEN FIND PHONE CALLS SHE/HE made ---> find partner
 
 */
+
+
+
+
+
+
+----------------------
+
+/*
+----------------------
+-- Checkpoint v.1.2 --
+----------------------
+
+SELECT * FROM atm_transactions AS atm
+JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
+JOIN people as ppl ON ppl.id = ba.person_id
+WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
+AND day = 28 AND month = 7
+AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 07 );
+
+
+
+SELECT * FROM people LIMIT 5;
+
+
+SELECT * FROM phone_calls LIMIT 5;
+
+
+SELECT * FROM passengers LIMIT 5;
+
+*/
+
+------------------
+/*
+checkpoint v1.3
+
+We know People withdrawn and phone numbers and licence plates found on day = 28 AND month = 7
+
+SELECT * FROM atm_transactions AS atm
+JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
+JOIN people as ppl ON ppl.id = ba.person_id
+WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
+AND day = 28 AND month = 7
+AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 7 )
+AND ppl.phone_number IN ( SELECT pc.caller FROM phone_calls AS pc WHERE pc.duration <= 60 AND day = 28 AND month = 7 );
+
+
+-----+----------------+------+-------+-----+----------------+------------------+--------+----------------+-----------+---------------+--------+--------+----------------+-----------------+---------------+
+| id  | account_number | year | month | day |  atm_location  | transaction_type | amount | account_number | person_id | creation_year |   id   |  name  |  phone_number  | passport_number | license_plate |
++-----+----------------+------+-------+-----+----------------+------------------+--------+----------------+-----------+---------------+--------+--------+----------------+-----------------+---------------+
+| 267 | 49610011       | 2023 | 7     | 28  | Leggett Street | withdraw         | 50     | 49610011       | 686048    | 2010          | 686048 | Bruce  | (367) 555-5533 | 5773159633      | 94KL13X       |
+| 336 | 26013199       | 2023 | 7     | 28  | Leggett Street | withdraw         | 35     | 26013199       | 514354    | 2012          | 514354 | Diana  | (770) 555-1861 | 3592750733      | 322W7JE       |
+| 266 | 76054385       | 2023 | 7     | 28  | Leggett Street | withdraw         | 60     | 76054385       | 449774    | 2015          | 449774 | Taylor | (286) 555-6063 | 1988161715      | 1106N58       |
++-----+----------------+------+-------+-----+----------------+------------------+--------+----------------+-----------+---------------+--------+--------+----------------+-----------------+---------
+
+*/
+
+
+
+SELECT * FROM people LIMIT 5;
+.schema people
+
+SELECT * FROM flights LIMIT 5;
+.schema flights
+
+SELECT * FROM passengers LIMIT 5;
+.schema passengers
+
+SELECT * FROM airports LIMIT 5;
+.schema airports
+
