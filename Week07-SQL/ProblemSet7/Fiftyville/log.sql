@@ -52,7 +52,7 @@ WHERE year = 2023 AND day = 28 AND month = 07;
 
 /*
 
--- To check interviews with 3 withnesses
+-- To check plates according to interviews with 3 withnesses
 
 SELECT * FROM bakery_security_logs AS bs
 WHERE day = 28 AND month = 07 AND hour = 10 AND minute BETWEEN 10 AND 30 ;
@@ -133,19 +133,19 @@ WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
 AND day = 28 AND month = 07;
 */
 
-
 SELECT * FROM atm_transactions AS atm
 JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
 JOIN people as ppl ON ppl.id = ba.person_id
 WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
-AND day = 28 AND month = 07;
+AND day = 28 AND month = 7
+AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 07 AND hour = 10 AND minute BETWEEN 10 AND 30 );
 
 
 /*
 ------- ! PLAN ! -------
 
 
-ATM WİTHDRAWALS --> ACCOUNT_NUMB ---> PERSON ID --> PEOPLE  TABLE --> NAME
+ATM WİTHDRAWALS --> ACCOUNT_NUMB ---> PERSON ID --> PEOPLE  TABLE --> NAME >>> DONE!
 
 CHECK THIS NAME IS INCLUDED FIRST FLIGHT ON 29th of JULY !
 
