@@ -221,30 +221,6 @@ AND ppl.phone_number IN ( SELECT pc.caller FROM phone_calls AS pc WHERE pc.durat
 */
 
 
-
-SELECT * FROM people LIMIT 5;
-.schema people
-
-SELECT * FROM flights LIMIT 5;
-.schema flights
-
-SELECT * FROM passengers LIMIT 5;
-.schema passengers
-
-SELECT * FROM airports LIMIT 5;
-.schema airports
-
-
-SELECT * FROM airports as air
-JOIN flights AS f ON f.origin_airport_id = air.id
-WHERE air.id = 8
-AND day = 29 AND month = 7
-ORDER BY hour ASC;
-
-
-SELECT * FROM airports WHERE id = 4;
-
-
 /*
 
 SELECT * FROM airports as air
@@ -278,6 +254,74 @@ SELECT * FROM airports WHERE id = 4;
 -- flight id = 36, airport id = 8 CSF
 
 
+----------------------------------------
+----------- CHECKPOINT V1.4 ------------
+----------------------------------------
+
+/*
+
+SELECT * FROM passengers LIMIT 5;
+.schema passengers
 
 
 
+SELECT * FROM airports as air
+JOIN flights AS f ON f.origin_airport_id = air.id
+JOIN passengers AS p ON  p.flight_id = f.id
+WHERE air.id = 8 AND f.id = 36
+AND day = 29 AND month = 7
+ORDER BY hour ASC;
+
+*/
+
+
+-- OUTPUT
+
+/*
+
+----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+-----------+-----------------+------+
+| id | abbreviation |          full_name          |    city    | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute | flight_id | passport_number | seat |
++----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+-----------+-----------------+------+
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 7214083635      | 2A   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 1695452385      | 3B   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 5773159633      | 4A   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 1540955065      | 5C   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 8294398571      | 6C   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 1988161715      | 6D   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 9878712108      | 7A   |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     | 36        | 8496433585      | 7B   |
++----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+-----------+-----------------+------+
+
+*/
+
+
+
+SELECT * FROM people LIMIT 5;
+
+
+SELECT * FROM passengers LIMIT 5;
+
+
+SELECT * FROM flights LIMIT 5;
+
+
+SELECT * FROM airports LIMIT 5;
+
+
+
+
+
+SELECT * FROM atm_transactions AS atm
+JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
+JOIN people as ppl ON ppl.id = ba.person_id
+WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
+AND day = 28 AND month = 7
+AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 7 )
+AND ppl.phone_number IN ( SELECT pc.caller FROM phone_calls AS pc WHERE pc.duration <= 60 AND day = 28 AND month = 7 )
+AND ppl.passport_number IN
+(SELECT p.passport_number FROM airports as air
+JOIN flights AS f ON f.origin_airport_id = air.id
+JOIN passengers AS p ON  p.flight_id = f.id
+WHERE air.id = 8 AND f.id = 36
+AND day = 29 AND month = 7
+ORDER BY hour ASC);
