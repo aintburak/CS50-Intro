@@ -243,3 +243,41 @@ ORDER BY hour ASC;
 
 
 SELECT * FROM airports WHERE id = 4;
+
+
+/*
+
+SELECT * FROM airports as air
+JOIN flights AS f ON f.origin_airport_id = air.id
+WHERE air.id = 8
+AND day = 29 AND month = 7
+ORDER BY hour ASC;
+
++----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+
+| id | abbreviation |          full_name          |    city    | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
++----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 36 | 8                 | 4                      | 2023 | 7     | 29  | 8    | 20     |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 43 | 8                 | 1                      | 2023 | 7     | 29  | 9    | 30     |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 23 | 8                 | 11                     | 2023 | 7     | 29  | 12   | 15     |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 53 | 8                 | 9                      | 2023 | 7     | 29  | 15   | 20     |
+| 8  | CSF          | Fiftyville Regional Airport | Fiftyville | 18 | 8                 | 6                      | 2023 | 7     | 29  | 16   | 0      |
++----+--------------+-----------------------------+------------+----+-------------------+------------------------+------+-------+-----+------+--------+
+
+----
+
+
+SELECT * FROM airports WHERE id = 4;
+
++----+--------------+-------------------+---------------+
+| id | abbreviation |     full_name     |     city      |
++----+--------------+-------------------+---------------+
+| 4  | LGA          | LaGuardia Airport | New York City |
++----+--------------+-------------------+---------------+
+*/
+
+-- flight id = 36, airport id = 8 CSF
+
+
+
+
+
