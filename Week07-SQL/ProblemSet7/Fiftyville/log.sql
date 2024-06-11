@@ -179,8 +179,8 @@ AND THEN FIND PHONE CALLS SHE/HE made ---> find partner
 SELECT * FROM atm_transactions AS atm
 JOIN bank_accounts AS ba ON ba.account_number = atm.account_number
 JOIN people as ppl ON ppl.id = ba.person_id
-WHERE atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
-AND day = 28 AND month = 7
+WHERE day = 28 AND month = 7
+AND atm.atm_location = 'Leggett Street' AND transaction_type = 'withdraw'
 AND ppl.license_plate IN ( SELECT license_plate FROM bakery_security_logs WHERE day = 28 AND month = 07 );
 
 
@@ -234,3 +234,12 @@ SELECT * FROM passengers LIMIT 5;
 SELECT * FROM airports LIMIT 5;
 .schema airports
 
+
+SELECT * FROM airports as air
+JOIN flights AS f ON f.origin_airport_id = air.id
+WHERE air.id = 8
+AND day = 29 AND month = 7
+ORDER BY hour ASC;
+
+
+SELECT * FROM airports WHERE id = 4;
