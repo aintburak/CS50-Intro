@@ -1,0 +1,46 @@
+
+/* CONTAINER of message edit buttons */
+.message-edit-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* BUTTON for message editing */
+.message-edit-buttons button {
+  color: var(--color-text);
+  font-weight: bold;
+  font-size: 20px;
+  width: var(--width-button-editimage);
+  height: var(--height-button-editimage);
+  border-radius: 10px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.message-edit-buttons .edit {
+  background-color: #3498db;
+}
+
+.message-edit-buttons .delete {
+  background-color: #e74c3c;
+}
+
+.message-edit-buttons .edit-confirm {
+  background-color: #3498db;
+}
+
+.message-edit-buttons .edit-cancel {
+  background-color: #e67e22;
+}
+
+.message-edit-buttons .delete-confirm {
+  background-color: #e74c3c;
+}
+
+.message-edit-buttons .delete-cancel {
+  background-color: #e67e22;
+}

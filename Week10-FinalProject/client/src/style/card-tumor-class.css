@@ -1,0 +1,70 @@
+
+.card-tumor-class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  height: 175px;
+  width: max(min(50%, 300px), 200px);
+  text-align: center;
+}
+
+.card-tumor-class .info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.classification-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  /* TEMP */ color: var(--color-text);
+}
+
+.subtext {
+  opacity: 0.9;
+  font-size: 11px;
+  font-weight: bold;
+  padding-block: 2.5px;
+  /* TEMP */ color: var(--color-text);
+}
+
+.title {
+  align-self: flex-start;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--color-text);
+  max-width: 65%;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+.confidence-container {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.confidence-wheel {
+  align-self: center;
+  height: 80px;
+  width: 80px;
+  font-weight: bold;
+}
