@@ -1,11 +1,9 @@
-
 # CS50-Finance
 
+
+![image](https://cs50.harvard.edu/x/2024/psets/9/finance/finance_2024.png)
+
 This is the Finance problem set from Harvard's CS50 Introduction to Computer Science course. The project simulates a simple stock trading platform where users can register, log in, and manage their stock portfolio by buying and selling shares.
-
-## Demo
-
-![image](https://user-images.githubusercontent.com/92586852/213960254-d1c3dffe-24d1-4139-ae16-004316e6e02d.png)
 
 ## Project Structure
 
